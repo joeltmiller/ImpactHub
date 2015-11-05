@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script src="vendors/angular/angular.js"></script>
+    <script src="vendors/angular-route/angular-route.min.js"></script>
+    <script src="javascripts/client.js"></script>
+</head>
+<body>
+    <form method="POST" action="/guest">
+        <div>
+            <label>Fullname</label>
+            <input type="text" placeholder="Full Name" name="name">
+        </div>
+        <div>
+            <label>Email</label>
+            <input type="text" placeholder="e-mail" name="email">
+        </div>
+        <div>
+            <label>Who are you meeting with?</label>
+            <input type="text"  name="meeting" value="Ryan">
+        </div>
+        <div>
+            <label>Twitter Handle</label>
+            <input type="text" placeholder="@twitter" name="twitter">
+        </div>
+        <div>
+            <label>Are you interested in becoming a member?</label>
+            <input type="checkbox" name="member" ng-value="checkedValue()">
+        </div>
+        <div>
+            <label>Can We Send You Email?</label>
+            <input type="checkbox" name="email_opt_in" ng-checked="checkedValue()" >
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
