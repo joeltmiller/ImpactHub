@@ -1,32 +1,43 @@
-<br>
-<h1>GUEST INFO FORM</h1>
-<p>{{message}}</p>
+<div class="pure-g">
+    <div class="pure-u-1-3 pure-u-md-1-3">
 
-<form method="POST" action="/guest">
-    <div>
-        <label>Fullname</label>
-        <input type="text" placeholder="Full Name" name="name">
-    </div>
-    <div>
-        <label>Email</label>
-        <input type="text" placeholder="e-mail" name="email">
-    </div>
-    <div>
-        <label>Who are you meeting with?</label>
-        <input type="text"  name="meeting" value="Ryan">
-    </div>
-    <div>
-        <label>Twitter Handle</label>
-        <input type="text" placeholder="@twitter" name="twitter">
-    </div>
-    <div>
-        <label>Are you interested in becoming a member?</label>
-        <input type="checkbox" name="member" ng-value="checkedValue()">
-    </div>
-    <div>
-        <label>Can We Send You Email?</label>
-        <input type="checkbox" name="email_opt_in" ng-checked="checkedValue()" >
     </div>
 
-    <button type="submit">Submit</button>
-</form>
+    <div class="main-login-content pure-u-1-3 pure-u-md-1-3">
+
+        <h2>Tell Us About Yourself!</h2>
+
+
+        <div class="pure-u-1">
+            <form method="POST" action="/guest" class="form-content pure-form">
+                <div class="inputs">
+                        <input class="pure-input-2-3 guestInput" type="text" placeholder="Full Name" name="name">
+
+                        <input class="pure-input-2-3 guestInput" type="text" placeholder="e-mail" name="email">
+
+                        <input class="pure-input-2-3 guestInput" type="text"  name="meeting" placeholder="Who are you meeting?">
+
+                        <input class="pure-input-2-3 guestInput" type="text" placeholder="@twitter" name="twitter">
+
+                    <div class="pure-u-1">
+                        <label>
+                        <input class="guestInput" type="checkbox" name="member" ng-value="checkedValue()"> Interested in becoming a member?</label>
+                    </div>
+
+                    <div class="pure-u-1">
+                        <label>
+                        <input class="guestInput" type="checkbox" name="email_opt_in" ng-checked="checkedValue()" > Can We Send You Email?</label>
+                    </div>
+
+                    <div class="pure-u-1">
+                        <button class="button-guestSubmit pure-button guestInput" type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="pure-u-1-3 pure-u-md-1-3">
+
+    </div>
+
+</div>
