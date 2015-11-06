@@ -11,9 +11,6 @@ myApp.controller('MainController', ['$scope','$http', function($scope, $http) {
         $scope.jsonData = res.data;
     });
 
-    $scope.checkedValue = function(){
-        return parseInt(1);
-    };
 
 
 

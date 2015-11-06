@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -7,7 +7,7 @@
     <script src="vendors/angular-route/angular-route.min.js"></script>
     <script src="javascripts/client.js"></script>
 </head>
-<body>
+<body ng-controller="MainController">
     <form method="POST" action="/guest">
         <div>
             <label>Fullname</label>
@@ -27,13 +27,12 @@
         </div>
         <div>
             <label>Are you interested in becoming a member?</label>
-            <input type="checkbox" name="member" ng-value="checkedValue()">
+            <input type="checkbox" name="member" ng-model="checked">
         </div>
         <div>
             <label>Can We Send You Email?</label>
-            <input type="checkbox" name="email_opt_in" ng-checked="checkedValue()" >
+            <input type="checkbox" name="email_opt_in" ng-model="email_opt_in">
         </div>
-
         <button type="submit">Submit</button>
     </form>
 </body>
