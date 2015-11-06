@@ -12,3 +12,38 @@ a {
   display: block;
   width: 300px;
 }
+
+body {
+  background-color: #999b9b;
+}
+
+#main {
+  display: block;
+  clear: both;
+}
+
+.button-guestSubmit {
+  background-color: #999b9b;
+  color: #000000;
+}
+
+.main-login-content {
+  padding: 25px;
+  border-radius: 3px;
+  background-color: #812926;
+}
+
+.main-login-content {
+  text-align: center;
+  margin-top: 5%
+}
+
+.guestInput {
+  margin: 10px auto;
+  min-width: 30%;
+}
+
+.inputs {
+  text-align: center;
+}
+
