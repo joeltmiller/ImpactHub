@@ -27,13 +27,29 @@ router.post('/guest', function (req, res) {
     var member = req.body.member;
     var email_opt_in = req.body.email_opt_in;
 
+    if(member == "on"){
+        member = 1;
+    }else{
+        member = 0;
+    }
+
+    if(email_opt_in == "on"){
+        email_opt_in = 1;
+    }else{
+        email_opt_in = 0;
+    }
+
     var post = {fullname: name, email: email, meeting_with: meeting,
     twitter: twitter, member: member, email_opt_in: email_opt_in
     };
 
+    console.log(post);
+
     connection.query('INSERT INTO guest SET ?', post, function (err) {
         if (err) throw err;
+
         res.send(200);
+
     });
 
 });

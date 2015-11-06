@@ -27,5 +27,7 @@ app.config(function($routeProvider, $locationProvider){
             controller: 'DashboardController'
         });
 
+
     $locationProvider.html5Mode(true);
 });
+
