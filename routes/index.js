@@ -5,16 +5,16 @@ var router = express.Router();
 
 //Loading in the sql database
 var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'impact_msp',
+    host: 'merkedyou.com',
+    user: 'merkedyo_impact',
     password: 'test123',
-    database: 'impact_schema'
+    database: 'merkedyo_impact_hub'
 });
 
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-    res.sendFile(path.join(__dirname, '../views/index.html'));
+router.get('*', function (req, res, next) {
+    res.sendFile(path.join(__dirname, '../public/views/index.html'));
 });
 
 //Form Post

@@ -1,20 +1,31 @@
-/**
- * Created by m3rkz0r on 11/3/15.
- */
-var myApp = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngRoute']);
 
-myApp.controller('MainController', ['$scope','$http', function($scope, $http) {
+app.config(function($routeProvider, $locationProvider){
+    $routeProvider
+        .when('/',{
+            templateUrl:'views/home.html',
+            controller: 'HomeController'
+        })
+        .when('/signin',{
+            templateUrl:'views/signin.html',
+            controller: 'SigninController'
+        })
+        .when('/guestinfo', {
+            templateUrl: 'views/guestinfo.html',
+            controller: 'GuestFormController'
+        })
+        .when('/admin', {
+            templateUrl: 'views/admin.html',
+            controller: 'AdminController'
+        })
+        .when('/thanks', {
+            templateUrl: 'views/thanks.html',
+            controller: 'ThankYouController'
+        })
+        .when('/dashboard', {
+            templateUrl: 'views/dashboard.html',
+            controller: 'DashboardController'
+        });
 
-    $scope.jsonData = [];
-
-    $http.get('/data').then(function(res){
-        $scope.jsonData = res.data;
-    });
-
-    $scope.checkedValue = function(){
-        return parseInt(1);
-    };
-
-
-
-}]);
+    $locationProvider.html5Mode(true);
+});

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Impact Hub MSP</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <script src="vendors/angular/angular.js"></script>
+    <script src="vendors/angular-route/angular-route.min.js"></script>
+    <script src="javascripts/client.js"></script>
+    <script src="javascripts/GuestFormController.js"></script>
+    <script src="javascripts/HomeController.js"></script>
+    <script src="javascripts/SigninController.js"></script>
+    <script src="javascripts/DashboardController.js"></script>
+    <script src="javascripts/ThankYouController.js"></script>
+    <script src="javascripts/AdminController.js"></script>
+    <base href="/">
+</head>
+<body>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/signin">Member Sign-in</a></li>
+        <li><a href="/guestinfo">Guest Info Form</a></li>
+        <li><a href="/admin">Admin</a></li>
+        <li><a href="/thanks">Thanks</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+    </ul>
+
+    <div id="main">
+        <ng-view>
+
+        </ng-view>
+    </div>
+</body>
+</html>

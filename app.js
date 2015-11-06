@@ -13,10 +13,10 @@ var app = express();
 //mySQL Setup
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'impact_msp',
+  host: 'merkedyou.com',
+  user: 'merkedyo_impact',
   password: 'test123',
-  database: 'impact_schema'
+  database: 'merkedyo_impact_hub'
 });
 
 connection.connect(function(err){
@@ -40,7 +40,7 @@ connection.end();
 
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
