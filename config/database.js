@@ -5,8 +5,8 @@ module.exports = {
     'connection': {
         'host': 'merkedyou.com',
         'user': 'merkedyo_impact',
-        'password': 'test123',
-        'database': 'merkedyo_impact_hub'
+        'password': 'test123'
     },
-    'users_table': 'admins'
+    'database': 'merkedyo_impact_hub',
+    'users_table': 'users'
 };

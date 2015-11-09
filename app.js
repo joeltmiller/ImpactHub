@@ -25,8 +25,8 @@ var connection = mysql.createConnection({
 });
 
 connection.connect(function(err){
-  if(err) throw err
-  console.log('You are now connected!');
+  if(err) throw err;
+  console.log('You are now connected to the Database!');
 });
 
 connection.query('SELECT * FROM guest', function (err, rows, fields) {
@@ -48,14 +48,14 @@ connection.end();
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
   secret: 'testerson',
   resave: true,
-  saveUnitialized: true
+  saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
