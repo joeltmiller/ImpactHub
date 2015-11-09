@@ -4,11 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var session = require('express-session');
+var passport = require('passport');
+
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+require('./config/passport')(passport);
 
 //mySQL Setup
 var mysql = require('mysql');
@@ -20,8 +25,8 @@ var connection = mysql.createConnection({
 });
 
 connection.connect(function(err){
-  if(err) throw err
-  console.log('You are now connected!');
+  if(err) throw err;
+  console.log('You are now connected to the Database!');
 });
 
 connection.query('SELECT * FROM guest', function (err, rows, fields) {
@@ -47,8 +52,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(session({
+  secret: 'testerson',
+  resave: true,
+  saveUninitialized: true
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', routes);
 app.use('/users', users);
+
+require('./app/routes.js')(app, passport);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
