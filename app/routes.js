@@ -1,6 +1,7 @@
 /**
  * Created by davidhoverson on 11/6/15.
  */
+var path = require('path');
 module.exports = function(app, passport) {
 
     app.post('/login', passport.authenticate('local-login', {
@@ -25,7 +26,18 @@ module.exports = function(app, passport) {
 
     app.get('/logout', function (req, res) {
         req.logout();
-        res.resdirect('/');
+        res.redirect('/');
+    });
+
+    app.get('/dashboard', isLoggedIn, function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/views/dashboard.html"));
     });
 };
+
+function isLoggedIn(req, res, next) {
+    if (req.isAuthenticated())
+        return next();
+
+    res.redirect('/');
+}
 

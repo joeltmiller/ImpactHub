@@ -1,7 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="dashboard">
+<head>
+    <meta charset="UTF-8">
+    <title>DASHBOARD</title>
+    <link rel="stylesheet" href="/stylesheets/pure.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="vendors/angular/angular.js"></script>
+    <script src="javascripts/DashboardController.js"></script>
+</head>
+<body ng-controller="DashboardController">
+<p>{{message}}</p>
 <div>
     <h1>Impact Hub Dashboard</h1>
     <button><a href="/email">Email List</a></button>
-    <button><a href="/">Log Out</a></button>
+    <button><a href="/logout">Log Out</a></button>
 </div>
 <div>
     <h3>#'s in space</h3>
@@ -16,3 +29,5 @@
     <h4>All the graphs!!</h4>
     <img src="http://cdn.meme.am/instances/62989032.jpg">
 </div>
+</body>
+</html>

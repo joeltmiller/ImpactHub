@@ -13,9 +13,10 @@ var connection = mysql.createConnection({
 
 
 /* GET home page. */
-router.get('*', function (req, res, next) {
+router.get('/', function (req, res, next) {
     res.sendFile(path.join(__dirname, '../public/views/index.html'));
 });
+
 
 //Form Post
 router.post('/guest', function (req, res) {
