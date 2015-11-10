@@ -8,7 +8,7 @@ li {
   display: inline;
   float:left;
 }
-a {
+.testNav a {
   display: block;
   width: 300px;
 }
@@ -20,6 +20,18 @@ body {
 #main {
   display: block;
   clear: both;
+}
+
+.loginButton{
+  background-color: #FFFFFF;
+  height: 150px;
+  /*width: 40%;*/
+  margin: 3px;
+  text-decoration: none;
+}
+
+.loginWrapper{
+  margin: 0 auto;
 }
 
 .button-guestSubmit {
@@ -47,3 +59,15 @@ body {
   text-align: center;
 }
 
+.keypadButton {
+  background-color: #999b9b;
+  height: 55px;
+  margin: 2px;
+  border: solid black 1px;
+  cursor: pointer;
+}
+
+.keypadButton a{
+  text-decoration: none;
+  color: #000000;
+}
