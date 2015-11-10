@@ -19,17 +19,19 @@
                         <input class="pure-input-2-3 guestInput" type="text"  name="meeting" placeholder="Who are you meeting?">
 
                         <input class="pure-input-2-3 guestInput" type="text" placeholder="@twitter" name="twitter">
+                    <div class="inputWrapper">
+                        <div class="pure-u-1-6"></div>
+                        <div class="pure-u-2-3">
+                            <label>
+                            <input class="guestInput" type="checkbox" name="member" ng-value="checkedValue()"> Interested in becoming a member?</label>
+                        </div>
 
-                    <div class="pure-u-1">
-                        <label>
-                        <input class="guestInput" type="checkbox" name="member" ng-value="checkedValue()"> Interested in becoming a member?</label>
+                        <div class="pure-u-1-6"></div>
+                        <div class="pure-u-2-3">
+                            <label>
+                            <input class="guestInput" type="checkbox" name="email_opt_in" ng-checked="checkedValue()" > Can We Send You Email?</label>
+                        </div>
                     </div>
-
-                    <div class="pure-u-1">
-                        <label>
-                        <input class="guestInput" type="checkbox" name="email_opt_in" ng-checked="checkedValue()" > Can We Send You Email?</label>
-                    </div>
-
                     <div class="pure-u-1">
                         <button class="button-guestSubmit pure-button guestInput" type="submit">Submit</button>
                     </div>

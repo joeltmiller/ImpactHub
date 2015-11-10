@@ -1,3 +1,7 @@
+body {
+  background-color: #333333;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -8,13 +12,13 @@ li {
   display: inline;
   float:left;
 }
+a{
+  color: #ffffff;
+}
+
 .testNav a {
   display: block;
   width: 300px;
-}
-
-body {
-  background-color: #999b9b;
 }
 
 #main {
@@ -22,32 +26,50 @@ body {
   clear: both;
 }
 
+.main-login-content {
+  padding: 25px;
+  min-height: 80%;
+  border-radius: 3px;
+  background-color: #812926;
+  -webkit-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.76);
+  -moz-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.76);
+  box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.76);
+  text-align: center;
+  margin-top: 5%
+}
+
+.main-login-content h1, h2, p {
+  color: #ffffff;
+}
+
+.button-xlarge {
+  font-size: 125%;
+}
+
 .loginButton{
-  background-color: #FFFFFF;
-  height: 150px;
+  background-color: #999b9b;
+  height: 40%;
   /*width: 40%;*/
   margin: 3px;
+  padding: 10% 0;
   text-decoration: none;
 }
 
 .loginWrapper{
   margin: 0 auto;
+  display: block;
+  width: 100%;
+  /*text-align: center;*/
+}
+
+.loginButton a{
+  line-height: 100%;
+  padding: 10% 0;
 }
 
 .button-guestSubmit {
   background-color: #999b9b;
   color: #000000;
-}
-
-.main-login-content {
-  padding: 25px;
-  border-radius: 3px;
-  background-color: #812926;
-}
-
-.main-login-content {
-  text-align: center;
-  margin-top: 5%
 }
 
 .guestInput {
@@ -59,15 +81,24 @@ body {
   text-align: center;
 }
 
+.inputWrapper{
+  text-align: left;
+}
+
 .keypadButton {
   background-color: #999b9b;
   height: 55px;
   margin: 2px;
-  border: solid black 1px;
+  /*border: solid black 1px;*/
   cursor: pointer;
 }
 
 .keypadButton a{
+  text-decoration: none;
+  color: #000000;
+}
+
+button a{
   text-decoration: none;
   color: #000000;
 }
