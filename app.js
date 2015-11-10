@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('passport');
+var moment = require('moment');
 
 
 var routes = require('./routes/index');
@@ -18,7 +19,7 @@ require('./config/passport')(passport);
 //mySQL Setup
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host: 'merkedyou.com',
+  host: '66.147.244.241',
   user: 'merkedyo_impact',
   password: 'test123',
   database: 'merkedyo_impact_hub'
