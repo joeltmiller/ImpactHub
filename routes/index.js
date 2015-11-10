@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var mysql = require('mysql');
 var router = express.Router();
+//var request = require('request');
 
 //Loading in the sql database
 var connection = mysql.createConnection({
@@ -61,6 +62,14 @@ router.get('/data', function (req, res, next) {
         res.json(rows);
     });
 });
+
+
+//ALSO ACTIVATE REQUIRE REQUEST UP TOP!
+//request('https://api.thedatabank.com/v1.0/secure/init.asp?username=IMHSP_API&password=p8nRDaD2X0wc', function (error, response, body) {
+//    if (!error && response.statusCode == 200) {
+//        console.log(body)
+//    }
+//});
 
 
 module.exports = router;
