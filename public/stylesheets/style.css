@@ -59,9 +59,11 @@ a{
   margin: 0 auto 10% auto;
   display: block;
   width: 100%;
-
-  /*text-align: center;*/
 }
+
+/*.loginWrapper button{*/
+  /*float: right;*/
+/*}*/
 
 .loginButton a{
   line-height: 100%;
