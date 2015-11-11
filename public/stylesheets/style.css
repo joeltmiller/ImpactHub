@@ -1,5 +1,6 @@
 body {
   background-color: #333333;
+  background-image: url("/assets/gun_metal2.png");
 }
 
 ul {
@@ -46,12 +47,16 @@ a{
 .logo {
   width: 90%;
   /*float: left;*/
-  left: 0;
+  left: -3.75%;
   top: 15px;
   background-color: #FFFFFF;
   position: absolute;
-  padding: 2% 15% 2% 0;
-  border-radius: 0 3px 3px 0;
+  padding: 2% 10% 2% 10%;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.5);
+
   /*margin-bottom: 20%;*/
 }
 
@@ -65,10 +70,23 @@ a{
   .backBanner {
     width: 4.1%;
     position: absolute;
-    right: -3.5%;
+    right: -3.1%;
     top: 16px;
     z-index: -50;
   }
+
+  .backBanner_left {
+    width: 4.1%;
+    position: absolute;
+    left: -3.5%;
+    top: 16px;
+    z-index: -50;
+  }
+
+  .loginWrapper a{
+    font-size: 14px;
+  }
+
 }
 
 @media screen and (max-width: 579px) {
@@ -79,13 +97,29 @@ a{
     top: 16px;
     z-index: -50;
   }
+
+  .backBanner_left {
+    width: 4.1%;
+    position: absolute;
+    left: -2.7%;
+    top: 16px;
+    z-index: -50;
+  }
 }
 
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 900px) {
   .backBanner {
     width: 4.1%;
     position: absolute;
     right: -3.8%;
+    top: 16px;
+    z-index: -50;
+  }
+
+  .backBanner_left {
+    width: 4.1%;
+    position: absolute;
+    left: -3.8%;
     top: 16px;
     z-index: -50;
   }
@@ -99,10 +133,17 @@ a{
     top: 16px;
     z-index: -50;
   }
+
+  .backBanner_left {
+    width: 4.1%;
+    position: absolute;
+    left: -2.3%;
+    top: 16px;
+    z-index: -50;
+  }
 }
 
-
-.button-xlarge {
+  .button-xlarge {
   font-size: 125%;
 }
 
