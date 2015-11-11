@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var mysql = require('mysql');
 var router = express.Router();
-//var request = require('request');
+var request = require('request');
 
 //Loading in the sql database
 var connection = mysql.createConnection({
@@ -50,7 +50,7 @@ router.post('/guest', function (req, res) {
     connection.query('INSERT INTO guest SET ?', post, function (err) {
         if (err) throw err;
 
-        res.send(200);
+        res.redirect('views/thanks.html');
 
     });
 
@@ -65,11 +65,28 @@ router.get('/data', function (req, res, next) {
 
 
 //ALSO ACTIVATE REQUIRE REQUEST UP TOP!
-//request('https://api.thedatabank.com/v1.0/secure/init.asp?username=IMHSP_API&password=p8nRDaD2X0wc', function (error, response, body) {
+//request('http://www.omdbapi.com/?t=batman', function (error, response, body) {
 //    if (!error && response.statusCode == 200) {
 //        console.log(body)
 //    }
 //});
 
+request.get('https://api.thedatabank.com/v1.0/login.asp?').auth('IMPSP_API', 'p8nRDaD2X0wc', false).on('response', function(response) {
+    //console.log(response.statusCode);
+    //console.log(response.headers['content-type']);
+    //console.log(response);
+});
 
+//request.get('https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey').auth('IMPSP_API', 'p8nRDaD2X0wc', false).on('response', function(response) {
+//       if (!error && response.statusCode == 200) {
+//   console.log(response);
+//}
+//    });
+
+
+
+
+
+//https://api.thedatabank.com/v1.0/login.asp?username=IMHSP_API&password=p8nRDaD2X0wc
+//http://www.omdbapi.com/?t=batman
 module.exports = router;
