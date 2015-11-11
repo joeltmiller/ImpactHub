@@ -22,6 +22,7 @@
     "moment": "^2.10.6",
     "morgan": "~1.6.1",
     "mysql": "^2.9.0",
+    "ng-csv": "^0.3.6",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",

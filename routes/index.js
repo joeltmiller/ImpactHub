@@ -69,6 +69,13 @@ router.get('/data', function (req, res, next) {
     });
 });
 
+router.get('/guestEmails', function (req, res, next) {
+    connection.query('SELECT * FROM responses WHERE temp_member = 0 AND email IS NOT NULL ORDER BY temp_time DESC', function (err, rows) {
+        if (err) throw err;
+        res.json(rows);
+    });
+});
+
 
 //ALSO ACTIVATE REQUIRE REQUEST UP TOP!
 //request.jsonp('http://www.omdbapi.com/?t=batman', function (error, response, body) {

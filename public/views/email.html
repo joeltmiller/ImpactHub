@@ -1,0 +1,17 @@
+<div ng-controller="EmailController">
+<p>{{message}}</p>
+<table>
+    <tr>
+        <td>Timestamp</td>
+        <td>Name</td>
+        <td>email</td>
+        <td>Interested in Membership</td>
+    </tr>
+    <tr ng-repeat="guest in emails">
+        <td>{{guest.temp_time}}</td>
+        <td>{{guest.name}}</td>
+        <td>{{guest.email}}</td>
+        <td>{{member(guest.membership)}}</td>
+    </tr>
+</table>
+</div>
