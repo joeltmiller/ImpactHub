@@ -31,10 +31,10 @@ connection.connect(function(err){
 });
 
 connection.query('SELECT * FROM guest', function (err, rows, fields) {
-  //if (!err)
-  //  console.log('The solution is: ', rows);
-  //else
-  //  console.log('Error while performing Query.');
+  if (!err)
+    console.log('SELECT * FROM guest is successful');
+  else
+    console.log('Error while performing Query.');
 });
 
 connection.end();

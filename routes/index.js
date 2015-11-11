@@ -71,24 +71,47 @@ router.get('/data', function (req, res, next) {
 
 
 //ALSO ACTIVATE REQUIRE REQUEST UP TOP!
-//request('http://www.omdbapi.com/?t=batman', function (error, response, body) {
+//request.jsonp('http://www.omdbapi.com/?t=batman', function (error, response, body) {
 //    if (!error && response.statusCode == 200) {
 //        console.log(body)
 //    }
 //});
 
-request.get('https://api.thedatabank.com/v1.0/login.asp?').auth('IMPSP_API', 'p8nRDaD2X0wc', false).on('response', function(response) {
+//request.get('https://api.thedatabank.com/v1.0/login.asp?').auth('IMPSP_API', 'p8nRDaD2X0wc', false).on('response', function(response) {
     //console.log(response.statusCode);
     //console.log(response.headers['content-type']);
     //console.log(response);
+//});
+
+//request.get('https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey&callback=JSON_CALLBACK').on('response', function (response) {
+//    console.log(response.statusCode);
+//    console.log(response.headers['content-type']);
+//    console.log(response.data);
+//});
+
+request.get({url: "https://api.thedatabank.com/v1.0/login.asp?username=***&password=***"}, function(e, r, json) {
+    console.log(json);
+    console.log(e);
+    //console.log(r);
 });
 
+//var options = {
+//    //url: 'https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey'
+//    url:'https://api.thedatabank.com/v1.0/login.asp?username=IMHSP_API&password=p8nRDaD2X0wc'
+//};
+//function callback(error, response, body) {
+//    if (!error && response.statusCode == 200) {
+//        var info = JSON.parse(body);
+//        console.log(response);
+//        console.log(info, "This was the info");
+//    }
+//}
+//request(options, callback);
 //request.get('https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey').auth('IMPSP_API', 'p8nRDaD2X0wc', false).on('response', function(response) {
 //       if (!error && response.statusCode == 200) {
 //   console.log(response);
 //}
 //    });
-
 
 
 
