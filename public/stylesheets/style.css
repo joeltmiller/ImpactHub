@@ -35,12 +35,72 @@ a{
   -moz-box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.76);
   box-shadow: 2px 2px 3px 0px rgba(0,0,0,0.76);
   text-align: center;
-  margin-top: 5%
+  margin-top: 5%;
+  position: relative;
 }
 
 .main-login-content h1, h2, p {
   color: #ffffff;
 }
+
+.logo {
+  width: 90%;
+  /*float: left;*/
+  left: 0;
+  top: 15px;
+  background-color: #FFFFFF;
+  position: absolute;
+  padding: 2% 15% 2% 0;
+  border-radius: 0 3px 3px 0;
+  /*margin-bottom: 20%;*/
+}
+
+.image-wrapper{
+  margin-bottom: 25%;
+  /*background-color: #333333;*/
+}
+
+/*Media Queries to adjust banner depending on screen-size and device*/
+@media screen and (min-width: 580px) {
+  .backBanner {
+    width: 4.1%;
+    position: absolute;
+    right: -3.5%;
+    top: 16px;
+    z-index: -50;
+  }
+}
+
+@media screen and (max-width: 579px) {
+  .backBanner {
+    width: 4.1%;
+    position: absolute;
+    right: -2.7%;
+    top: 16px;
+    z-index: -50;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .backBanner {
+    width: 4.1%;
+    position: absolute;
+    right: -3.8%;
+    top: 16px;
+    z-index: -50;
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .backBanner {
+    width: 4.1%;
+    position: absolute;
+    right: -2.3%;
+    top: 16px;
+    z-index: -50;
+  }
+}
+
 
 .button-xlarge {
   font-size: 125%;
