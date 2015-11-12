@@ -63,7 +63,7 @@ router.post('/guest', function (req, res) {
 });
 
 router.get('/data', function (req, res, next) {
-    connection.query('SELECT * FROM guest', function (err, rows) {
+    connection.query('SELECT * FROM responses', function (err, rows) {
         if (err) throw err;
         res.json(rows);
     });
