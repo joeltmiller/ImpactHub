@@ -76,6 +76,13 @@ router.get('/guestEmails', function (req, res, next) {
     });
 });
 
+router.get('/guestWeek', function(req, res) {
+    connection.query('SELECT * FROM responses WHERE temp_member = 0 AND temp_time BETWEEN CURDATE()-INTERVAL 1 WEEK AND CURDATE()', function (err, rows) {
+        if (err) throw err;
+        res.json(rows);
+        console.log(rows);
+    });
+});
 
 //ALSO ACTIVATE REQUIRE REQUEST UP TOP!
 //request.jsonp('http://www.omdbapi.com/?t=batman', function (error, response, body) {
