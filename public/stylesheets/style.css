@@ -214,9 +214,23 @@ a{
   color: #000000;
 }
 
+.bottomForm {
+  text-align: left;
+  margin: 0 1% -5% 1%;
+}
+
 .guestInput {
   margin: 10px auto;
   min-width: 30%;
+}
+
+.guestInputLast {
+  margin: 10px auto 0 auto;
+  min-width: 30%;
+}
+
+.submit-button{
+  float: right;
 }
 
 .inputs {
@@ -260,6 +274,11 @@ button a{
   height: 50px;
   line-height: 50px;
   margin-bottom: 2%;
+  cursor: pointer;
+}
+
+.topLabel li:hover{
+  background-color: #b2b2b2;
 }
 
 .box-border-right{
