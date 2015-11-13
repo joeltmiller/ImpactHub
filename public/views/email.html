@@ -14,5 +14,5 @@
         <td>{{member(guest.membership)}}</td>
     </tr>
 </table>
-<button type="button" ng-csv="getArray()" filename="email.csv">Export List</button>
+<button type="button" ng-csv="getArray($scope.emails)" filename="email.csv">Export List</button>
 </div>

@@ -13,17 +13,17 @@ app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
         }
     }
 
-    function getArray($scope.emails){
+    function getArray(scope){
         var headings = ["Timestamp", "Name", "Email", "Interested in Membership"];
 
         var data = [];
 
 
-        for(var i = 0; i < $scope.emails.length; i++){
+        for(var i = 0; i < scope.length; i++){
             var newRow = {};
 
-            for(var j = 0; j < $scope.emails.length; j++){
-                newRow[headings[j]] = isNaN($scope.emails[i][headings[j]])?'"' + $scope.emails[i][headings[j]] + '"' : $scope.emails[i][headings[j]];
+            for(var j = 0; j < scope.length; j++){
+                newRow[headings[j]] = isNaN(scope[i][headings[j]])?'"' + scope[i][headings[j]] + '"' : scope[i][headings[j]];
             }
         data.push(newRow);
         }
