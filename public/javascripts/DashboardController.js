@@ -4,17 +4,25 @@
 app.controller('DashboardController', ['$scope', '$http', function($scope, $http) {
 
         $scope.guestWeek = [];
+        $scope.memberWeek = [];
 
         $http({
             method:'GET',
-            url: '/guestWeek'
+            url: '/perWeek'
         }).then(function(response){
             $scope.guestWeek = [];
+            $scope.memberWeek=[];
             for (var i= 0; i <response.data.length; i++){
-                $scope.guestWeek.push(response.data[i]);
+                if (response.data[i].temp_member == 0) {
+                    $scope.guestWeek.push(response.data[i]);
+                } else
+                    $scope.memberWeek.push(response.data[i]);
             }
             console.log($scope.guestWeek.length);
+            console.log($scope.memberWeek.length);
         });
+
+
         //$http({
         //    method:'JSONP',
         //    url:"https://api.thedatabank.com/v1.0/login.asp?username=IMHSP_API&password=p8nRDaD2X0wc"

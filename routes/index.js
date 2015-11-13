@@ -76,11 +76,17 @@ router.get('/guestEmails', function (req, res, next) {
     });
 });
 
-router.get('/guestWeek', function(req, res) {
-    connection.query('SELECT * FROM responses WHERE temp_member = 0 AND temp_time BETWEEN CURDATE()-INTERVAL 1 WEEK AND CURDATE()', function (err, rows) {
+router.get('/perWeek', function(req, res) {
+    connection.query('SELECT * FROM responses WHERE temp_time BETWEEN NOW()-INTERVAL 8 DAY AND NOW()', function (err, rows) {
         if (err) throw err;
         res.json(rows);
-        console.log(rows);
+    });
+});
+
+router.get('/perMonth', function(req, res) {
+    connection.query('SELECT * FROM responses WHERE temp_time BETWEEN NOW()-INTERVAL 6 MONTH AND NOW()', function(err, rows) {
+        if(err) throw err;
+        res.json(rows);
     });
 });
 
@@ -103,7 +109,7 @@ router.get('/guestWeek', function(req, res) {
 //    console.log(response.data);
 //});
 
-request.get({url: "https://api.thedatabank.com/v1.0/login.asp?username=***&password=***"}, function(e, r, json) {
+request.get({url: "https://api.thedatabank.com/v1.0/login.asp?username=IMHSP_API&password=p8nRDaD2X0wc"}, function(e, r, json) {
     console.log(json);
     console.log(e);
     //console.log(r);
