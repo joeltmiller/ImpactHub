@@ -1,18 +1,102 @@
 <div ng-controller="EmailController">
-<p>{{message}}</p>
-<table>
-    <tr>
-        <td>Timestamp</td>
-        <td>Name</td>
-        <td>email</td>
-        <td>Interested in Membership</td>
-    </tr>
-    <tr ng-repeat="guest in emails">
-        <td>{{guest.temp_time}}</td>
-        <td>{{guest.name}}</td>
-        <td>{{guest.email}}</td>
-        <td>{{member(guest.membership)}}</td>
-    </tr>
-</table>
-<button ng-click="clickFn()" type="button" ng-csv="getArray()" csv-header="getHeader()" filename="email.csv">Export List</button>
+
+    <button ng-click="clickFn()" type="button" ng-csv="getArray()" csv-header="getHeader()" filename="email.csv">Export List</button>
+
+    <div class="pure-g">
+
+        <div class="header-wrapper pure-u-1">
+            <img class="email-header pure-img" src="/assets/RedMinneStPaulDG.png">
+        </div>
+
+        <div class="pure-u-md-1-5 pure-u-lg-1-3 pure-u-1-6">
+
+        </div>
+
+        <div class="email-content pure-u-2-3 pure-u-md-3-5 pure-u-lg-1-3">
+
+
+
+                <div class="topLabel pure-u-1">
+                    <ul class="categories">
+                            <li class="time pure-u-1-4">
+                                <div class="box-border-right">
+                                    Timestamp
+                                </div>
+                            </li>
+
+                            <li class="name pure-u-1-4">
+                                <div class="box-border-right">
+                                    Name
+                                </div>
+                            </li>
+
+                            <li class="email pure-u-1-4">
+                                <div class="box-border-right">
+                                    Email
+                                </div>
+                            </li>
+
+                        <li class="interest pure-u-1-4">Interested in Membership</li>
+                    </ul>
+
+                </div>
+
+            <div ng-repeat="guest in emails" class="list-item pure-u-1">
+                <ul class="categories">
+                    <li ng-class-odd="'odd'" ng-class-even="'even'" class = "time pure-u-1-4">
+                        <div class="box-border-right">
+                            {{guest.temp_time}}
+                        </div>
+                    </li>
+
+                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-1-4">
+                        <div class="box-border-right">
+                            {{guest.name}}
+                        </div>
+                    </li>
+
+                    <li ng-class-odd="'odd'" ng-class-even="'even'"  class="email pure-u-1-4">
+                        <div class="box-border-right">
+                            {{guest.email}}
+                        </div>
+                    </li>
+
+                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="interest pure-u-1-4">{{member(guest.membership)}}</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+
+
+
+            <!--<br>-->
+            <!--<br>-->
+            <!--<table class="pure-table pure-table-horizontal">-->
+                <!--<thead>-->
+                    <!--<tr>-->
+                        <!--<td>Timestamp</td>-->
+                        <!--<td>Name</td>-->
+                        <!--<td>email</td>-->
+                        <!--<td>Interested in Membership</td>-->
+                    <!--</tr>-->
+                <!--</thead>-->
+                <!--<tbody ng-repeat="guest in emails">-->
+                    <!--<tr class="pure-table-striped">-->
+                        <!--<td>{{guest.temp_time}}</td>-->
+                        <!--<td>{{guest.name}}</td>-->
+                        <!--<td>{{guest.email}}</td>-->
+                        <!--<td>{{member(guest.membership)}}</td>-->
+                    <!--</tr>-->
+                <!--</tbody>-->
+            <!--</table>-->
+        <!--</div>-->
+<!---->
+        <div class="pure-u-md-1-5 pure-u-lg-1-3 pure-u-1-6">
+
+        </div>
+
+    </div>
+
 </div>
