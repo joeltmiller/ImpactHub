@@ -1,4 +1,4 @@
-var app = angular.module('dashboard', ['ngRoute']);
+var app = angular.module('dashboard', ['ngRoute', 'ngCsv']);
 
 app.config(function($routeProvider, $locationProvider){
     $routeProvider
