@@ -1,4 +1,5 @@
-var app = angular.module('dashboard', ['ngRoute', 'tc.chartjs']);
+var app = angular.module('dashboard', ['ngRoute', 'tc.chartjs', 'ngSanitize', 'ngCsv']);
+
 
 app.config(function($routeProvider, $locationProvider){
     $routeProvider
