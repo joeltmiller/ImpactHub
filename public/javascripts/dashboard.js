@@ -1,9 +1,10 @@
-var app = angular.module('dashboard', ['ngRoute', 'ngCsv']);
+var app = angular.module('dashboard', ['ngRoute', 'ngCsv', 'tc.chartjs']);
+
 
 app.config(function($routeProvider, $locationProvider){
     $routeProvider
-        .when('/data',{
-            templateUrl:'views/data.html',
+        .when('/graphs',{
+            templateUrl:'views/graphs.html',
             controller: 'DashboardController'
         })
         .when('/email', {
@@ -11,7 +12,7 @@ app.config(function($routeProvider, $locationProvider){
             controller: 'EmailController'
         })
         .otherwise({
-            redirectTo: '/data'
+            redirectTo: '/graphs'
 
         });
 
