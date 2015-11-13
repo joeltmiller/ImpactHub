@@ -1,11 +1,12 @@
-/**
- * Created by davidhoverson on 11/6/15.
- */
 app.controller('GuestFormController', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
     $scope.jsonData = [];
 
     $scope.postData = [];
+
+    $scope.checkboxEmail = true;
+
+    $scope.checkboxMember = true;
 
 
 
