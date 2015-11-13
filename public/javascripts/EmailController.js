@@ -13,24 +13,34 @@ app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
         }
     }
 
-    function getArray(scope){
-        var headings = ["Timestamp", "Name", "Email", "Interested in Membership"];
+    var headings = ["Timestamp", "Name", "Email", "Interested in Membership"];
 
-        var data = [];
+    $scope.getArray = function() {
 
+        //var data = [];
+        //
+        //
+        //for(var i = 0; i < $scope.emails.length; i++){
+        //
+        //    var dataObj = {};
+        //
+        //    for(var j = 0; j < $scope.emails[i].length; j++){
+        //        dataObj.push($scope.emails[i][j])
+        //    }
+        //data.push(dataObj);
+        //}
+        //console.log(data);
+        //return data;
+        return $scope.emails;
 
-        for(var i = 0; i < scope.length; i++){
-            var newRow = {};
+    }
 
-            for(var j = 0; j < scope.length; j++){
-                newRow[headings[j]] = isNaN(scope[i][headings[j]])?'"' + scope[i][headings[j]] + '"' : scope[i][headings[j]];
-            }
-        data.push(newRow);
-        }
-        console.log(data);
-        return data;
+    $scope.getHeader = function() {
+        return headings;
+    }
 
-
+    $scope.clickFn = function () {
+        console.log("button clicked");
     }
 
 
