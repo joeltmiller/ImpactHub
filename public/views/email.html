@@ -18,34 +18,34 @@
 
                 <div class="topLabel pure-u-1">
                     <ul class="categories">
-                            <li class="time pure-u-1-4">
+                            <li ng-click="order('temp_time')" class="time pure-u-1-4">
                                 <div class="box-border-right">
                                     Timestamp
                                 </div>
                             </li>
 
-                            <li class="name pure-u-1-4">
+                            <li ng-click="order('name')" class="name pure-u-1-4">
                                 <div class="box-border-right">
                                     Name
                                 </div>
                             </li>
 
-                            <li class="email pure-u-1-4">
+                            <li ng-click="order('email')" class="email pure-u-1-4">
                                 <div class="box-border-right">
                                     Email
                                 </div>
                             </li>
 
-                        <li class="interest pure-u-1-4">Interested in Membership</li>
+                        <li ng-click="orderMember('membership')" class="interest pure-u-1-4">Interested in Membership</li>
                     </ul>
 
                 </div>
 
-            <div ng-repeat="guest in emails" class="list-item pure-u-1">
+            <div ng-repeat="guest in emails | orderBy:predicate:reverse" class="list-item pure-u-1">
                 <ul class="categories">
                     <li ng-class-odd="'odd'" ng-class-even="'even'" class = "time pure-u-1-4">
                         <div class="box-border-right">
-                            {{guest.temp_time}}
+                            {{guest.temp_time | date:"MM/dd/yyyy 'at' h:mma"}}
                         </div>
                     </li>
 
