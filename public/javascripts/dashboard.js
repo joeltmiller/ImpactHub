@@ -1,4 +1,4 @@
-var app = angular.module('dashboard', ['ngRoute', 'ngCsv', 'tc.chartjs']);
+var app = angular.module('dashboard', ['ngRoute', 'tc.chartjs']);
 
 
 app.config(function($routeProvider, $locationProvider){
