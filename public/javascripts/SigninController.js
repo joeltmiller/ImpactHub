@@ -4,6 +4,10 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
     $scope.memberID = '';
     $scope.memberSuccess = '';
 
+
+
+
+
     $http({
         method:'JSONP',
         url:"https://api.thedatabank.com/v1.0/login.asp?username=IMHSP_API&password=p8nRDaD2X0wc"
@@ -37,6 +41,9 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
                     console.log("Hello, ", memberVerify.Members[0].FullName1);
                     $scope.memberSuccess = memberVerify.Members[0].FullName1;
                     $location.path("/thanks");
+                }else{
+                    alert("member not found");
+                    $scope.memberID = '';
                 }
 
             }, function errorCallBack(response){
@@ -49,7 +56,8 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
 
 
 
-        } else {
+        }
+        else {
             alert("invalid code");
             $scope.memberID = '';
         }
