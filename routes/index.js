@@ -77,43 +77,84 @@ router.get('/guestEmails', function (req, res, next) {
 });
 
 router.get('/perWeek', function(req, res) {
-    connection.query('SELECT * FROM responses WHERE temp_time BETWEEN NOW()-INTERVAL 8 DAY AND NOW()', function (err, rows) {
+    connection.query('SELECT * FROM responses WHERE temp_time BETWEEN NOW()-INTERVAL 7 DAY AND NOW()', function (err, rows) {
         if (err) throw err;
         res.json(rows);
     });
 });
 
-router.get('/perMonth', function(req, res) {
-    connection.query('SELECT * FROM responses WHERE temp_time BETWEEN NOW()-INTERVAL 6 MONTH AND NOW()', function(err, rows) {
+router.get('/currentMonth', function(req, res) {
+    connection.query('SELECT * FROM responses WHERE YEAR(temp_time) = YEAR(CURRENT_DATE) AND MONTH(temp_time) = MONTH(CURRENT_DATE)', function(err, rows) {
         if(err) throw err;
         res.json(rows);
     });
 });
 
-//ALSO ACTIVATE REQUIRE REQUEST UP TOP!
-//request.jsonp('http://www.omdbapi.com/?t=batman', function (error, response, body) {
-//    if (!error && response.statusCode == 200) {
-//        console.log(body)
-//    }
-//});
+router.get('/priorMonth', function(req, res) {
+    connection.query('SELECT * FROM responses WHERE YEAR(temp_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(temp_time) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)', function(err, rows) {
+        if(err) throw err;
+        res.json(rows);
+    });
+});
 
-//request.get('https://api.thedatabank.com/v1.0/login.asp?').auth('IMPSP_API', 'p8nRDaD2X0wc', false).on('response', function(response) {
-    //console.log(response.statusCode);
-    //console.log(response.headers['content-type']);
-    //console.log(response);
+router.get('/priorTwoMonth', function(req, res) {
+    connection.query('SELECT * FROM responses WHERE YEAR(temp_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(temp_time) = MONTH(CURRENT_DATE - INTERVAL 2 MONTH)', function(err, rows) {
+        if(err) throw err;
+        res.json(rows);
+    });
+});
+
+router.get('/priorThreeMonth', function(req, res) {
+    connection.query('SELECT * FROM responses WHERE YEAR(temp_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(temp_time) = MONTH(CURRENT_DATE - INTERVAL 3 MONTH)', function(err, rows) {
+        if(err) throw err;
+        res.json(rows);
+    });
+});
+
+router.get('/priorFourMonth', function(req, res) {
+    connection.query('SELECT * FROM responses WHERE YEAR(temp_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(temp_time) = MONTH(CURRENT_DATE - INTERVAL 4 MONTH)', function(err, rows) {
+        if(err) throw err;
+        res.json(rows);
+    });
+});
+
+router.get('/priorFiveMonth', function(req, res) {
+    connection.query('SELECT * FROM responses WHERE YEAR(temp_time) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) AND MONTH(temp_time) = MONTH(CURRENT_DATE - INTERVAL 5 MONTH)', function(err, rows) {
+        if(err) throw err;
+        res.json(rows);
+    });
+});
+
+request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username: 'IMHSP_API', password: 'p8nRDaD2X0wc' }},
+function(err, response, body) {
+    console.log(body);
+});
+
+request.post({url:'https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?', form: {lastname: 'bailey'}},
+    function(err, response, body) {
+        console.log(response);
+    });
+
+
+//ALSO ACTIVATE REQUIRE REQUEST UP TOP!
+
+//request.post('https://api.thedatabank.com/v1.0/login.asp?').auth('IMPSP_API', 'p8nRDaD2X0wc', false).on('response', function(response) {
+//    console.log(response.statusCode);
+//    console.log(response.headers['content-type']);
+//    console.log(response.body);
 //});
 
 //request.get('https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey&callback=JSON_CALLBACK').on('response', function (response) {
 //    console.log(response.statusCode);
-//    console.log(response.headers['content-type']);
-//    console.log(response.data);
+//    //console.log(response.headers['content-type']);
+//    console.log(response);
 //});
 
-request.get({url: "https://api.thedatabank.com/v1.0/login.asp?username=IMHSP_API&password=p8nRDaD2X0wc"}, function(e, r, json) {
-    console.log(json);
-    console.log(e);
-    //console.log(r);
-});
+//request.get({url: "https://api.thedatabank.com/v1.0/login.asp?username=IMHSP_API&password=p8nRDaD2X0wc"}, function(e, r, json) {
+//    console.log(json);
+//    console.log(e);
+//    console.log(r);
+//});
 
 //var options = {
 //    //url: 'https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey'
@@ -127,11 +168,6 @@ request.get({url: "https://api.thedatabank.com/v1.0/login.asp?username=IMHSP_API
 //    }
 //}
 //request(options, callback);
-//request.get('https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey').auth('IMPSP_API', 'p8nRDaD2X0wc', false).on('response', function(response) {
-//       if (!error && response.statusCode == 200) {
-//   console.log(response);
-//}
-//    });
 
 
 
