@@ -6,9 +6,6 @@ var router = express.Router();
 var moment = require('moment');
 var request = require('request');
 
-var http = require('follow-redirects').http;
-var https = require('follow-redirects').https;
-
 //Loading in the sql database
 var connection = mysql.createConnection({
     host: '66.147.244.241',
