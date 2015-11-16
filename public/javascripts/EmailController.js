@@ -29,7 +29,7 @@ app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
         }
     };
 
-    var headings = ["Timestamp", "Name", "Member", "Meeting with", "Email", "Twitter Handle", "Interested in Membership"];
+    var headings = ["Timestamp", "Name", "Member", "Meeting with", "Email", "Twitter Handle", "Email List", "Interested in Membership"];
 
 
     $http.get('/data').then(function(res){
@@ -44,19 +44,29 @@ app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
 
             for(var i = 0; i < $scope.calledData.length; i++){
 
-                var dataObj = {};
+                var dataObj = [];
 
-                for(var j = 0; j < $scope.calledData[i].length; j++){
-                    dataObj.push($scope.calledData[i].temp_time, $scope.calledData[i].name, $scope.calledData[i].member, $scope.calledData[i].meeting_with, $scope.calledData[i].email, $scope.calledData[i].twitter)
-                    if($scope.calledData[i].email_me == 0){
-                        dataObj.push("No");
-                    } else {
-                        dataObj.push("Yes");
-                    }
+                console.log("selected object", $scope.calledData[i]);
+
+                console.log("Called Data length: ", $scope.calledData.length);
+
+                console.log("Called Object length: ", $scope.calledData[i].length);
+
+                dataObj.push($scope.calledData[i].temp_time, $scope.calledData[i].name, $scope.calledData[i].member, $scope.calledData[i].meeting_with, $scope.calledData[i].email, $scope.calledData[i].twitter);
+                if($scope.calledData[i].email_me == 0){
+                    dataObj.push("No");
+                } else {
+                    dataObj.push("Yes");
                 }
+                if($scope.calledData[i].membership == 0){
+                    dataObj.push("No");
+                } else {
+                    dataObj.push("Yes");
+                }
+
             data.push(dataObj);
             }
-            console.log(data);
+            console.log($scope.calledData);
             return data;
         }
     });
