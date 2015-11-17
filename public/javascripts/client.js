@@ -26,6 +26,10 @@ app.config(function($routeProvider, $locationProvider){
             templateUrl: 'views/signup.html',
             controller: 'SignupController'
         })
+        .when('/whoshere',{
+            templateUrl: 'views/whoshere.html',
+            controller: 'WhosHereController'
+        })
         .otherwise({
             redirectTo: '/'
 

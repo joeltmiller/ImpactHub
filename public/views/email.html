@@ -1,167 +1,184 @@
-<div ng-controller="EmailController">
-    <div class="pure-g">
+<!DOCTYPE html>
+<html lang="en" ng-app="email">
+<head>
+    <meta charset="UTF-8">
+    <title>Email List</title>
+    <link rel="stylesheet" href="/stylesheets/pure.css">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="vendors/angular/angular.js"></script>
+    <script src="vendors/angular-sanitize/angular-sanitize.js"></script>
+    <script src="vendors/ng-csv/build/ng-csv.js"></script>
+    <script src="javascripts/EmailController.js"></script>
 
-        <div ng-class="navClass" class="header-wrapper pure-u-1">
-            <div class="navFix">
+</head>
+<body>
+    <div ng-controller="EmailController">
+        <div class="pure-g">
 
-                <img class="email-header pure-img" src="/assets/RedMinneStPaulDG.png">
-                <div class="top-menu pure-menu pure-menu-horizontal">
-                    <ul class="pure-menu-list">
-                        <li class="pure-menu-item"><a href=".index.html" class="pure-menu-link">Home</a></li>
-                        <li class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Dashboard</a></li>
-                    </ul>
+            <div ng-class="navClass" class="header-wrapper pure-u-1">
+                <div class="navFix">
+
+                    <img class="email-header pure-img" src="/assets/RedMinneStPaulDG.png">
+                    <div class="top-menu pure-menu pure-menu-horizontal">
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item"><a href=".index.html" class="pure-menu-link">Home</a></li>
+                            <li class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Dashboard</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="pure-u-md-1-5 pure-u-lg-1-3 pure-u-1-12">
+
+            </div>
+
+            <div class="email-content pure-u-5-6 pure-u-md-3-5 pure-u-lg-1-3">
+
+                <div class="pure-u-1">
+
+                    <form class="pure-form">
+
+                        <fieldset>
+                            <label for="time">Time Period</label>
+                                <select id="time">
+                                    <option>1 week</option>
+                                    <option>1 month</option>
+                                    <option>6 months</option>
+                                    <option>All</option>
+                                </select>
+
+                                <label for="email">Email</label>
+                                    <select id="email">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                        <option>Open</option>
+                                    </select>
+                                <label for="member">Interested in Membership</label>
+                                    <select id="member">
+                                        <option>Yes</option>
+                                        <option>No</option>
+                                        <option>Open</option>
+                                    </select>
+
+                                <button type="submit" class="pure-button">Generate</button>
+                                <button class="pure-button" ng-click="clickFn()" type="button" ng-csv="getSignIn()" csv-header="getHeader()" filename="email.csv">Export List</button>
+
+                        </fieldset>
+
+                    </form>
+
+
+
                 </div>
 
-            </div>
-        </div>
-
-        <div class="pure-u-md-1-5 pure-u-lg-1-3 pure-u-1-12">
-
-        </div>
-
-        <div class="email-content pure-u-5-6 pure-u-md-3-5 pure-u-lg-1-3">
-
-            <div class="pure-u-1">
-
-                <form class="pure-form">
-
-                    <fieldset>
-                        <label for="time">Time Period</label>
-                            <select id="time">
-                                <option>1 week</option>
-                                <option>1 month</option>
-                                <option>6 months</option>
-                                <option>All</option>
-                            </select>
-
-                            <label for="email">Email</label>
-                                <select id="email">
-                                    <option>Yes</option>
-                                    <option>No</option>
-                                    <option>Open</option>
-                                </select>
-                            <label for="member">Interested in Membership</label>
-                                <select id="member">
-                                    <option>Yes</option>
-                                    <option>No</option>
-                                    <option>Open</option>
-                                </select>
-
-                            <button type="submit" class="pure-button">Generate</button>
-                            <button class="pure-button" ng-click="clickFn()" type="button" ng-csv="getSignIn()" csv-header="getHeader()" filename="email.csv">Export List</button>
-
-                    </fieldset>
-
-                </form>
 
 
+                    <div class="topLabel pure-u-1">
+                        <ul class="categories">
+                                <li ng-click="order('temp_time')" class="time pure-u-2-24">
+                                    <div class="box-border-right">
+                                        Timestamp
+                                    </div>
+                                </li>
 
-            </div>
+                                <li ng-click="order('name')" class="name pure-u-4-24">
+                                    <div class="box-border-right">
+                                        Name
+                                    </div>
+                                </li>
 
+                                <li ng-click="order('member')" class="email pure-u-2-24">
+                                    <div class="box-border-right">
+                                        Member
+                                    </div>
+                                </li>
 
+                                <li ng-click="order('meetingWith')" class="email pure-u-4-24">
+                                    <div class="box-border-right">
+                                        Meeting With
+                                    </div>
+                                </li>
 
-                <div class="topLabel pure-u-1">
+                                <li ng-click="order('email')" class="email pure-u-4-24">
+                                    <div class="box-border-right">
+                                        Email
+                                    </div>
+                                </li>
+
+                                <li ng-click="order('twitterHandle')" class="email pure-u-4-24">
+                                    <div class="box-border-right">
+                                        Twitter Handle
+                                    </div>
+                                </li>
+
+                                <li ng-click="order('emailList')" class="email pure-u-2-24">
+                                    <div class="box-border-right">
+                                        Email?
+                                    </div>
+                                </li>
+
+                            <li ng-click="orderMember('membership')" class="interest pure-u-2-24">Membership?</li>
+                        </ul>
+
+                    </div>
+
+                <div ng-repeat="guest in data | orderBy:predicate:reverse" class="list-item pure-u-1">
                     <ul class="categories">
-                            <li ng-click="order('temp_time')" class="time pure-u-2-24">
-                                <div class="box-border-right">
-                                    Timestamp
-                                </div>
-                            </li>
+                        <li ng-class-odd="'odd'" ng-class-even="'even'" class = "time pure-u-2-24">
+                            <div class="box-border-right">
+                                {{guest[0] | date:"MM/dd/yyyy"}}
+                            </div>
+                        </li>
 
-                            <li ng-click="order('name')" class="name pure-u-4-24">
-                                <div class="box-border-right">
-                                    Name
-                                </div>
-                            </li>
+                        <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-4-24">
+                            <div class="box-border-right">
+                                {{guest[1]}}
+                            </div>
+                        </li>
 
-                            <li ng-click="order('member')" class="email pure-u-2-24">
-                                <div class="box-border-right">
-                                    Member
-                                </div>
-                            </li>
+                        <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-2-24">
+                            <div class="box-border-right">
+                                {{guest[2]}}
+                            </div>
+                        </li>
 
-                            <li ng-click="order('meetingWith')" class="email pure-u-4-24">
-                                <div class="box-border-right">
-                                    Meeting With
-                                </div>
-                            </li>
+                        <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-4-24">
+                            <div class="box-border-right">
+                                {{guest[3]}}
+                            </div>
+                        </li>
 
-                            <li ng-click="order('email')" class="email pure-u-4-24">
-                                <div class="box-border-right">
-                                    Email
-                                </div>
-                            </li>
+                        <li ng-class-odd="'odd'" ng-class-even="'even'"  class="email pure-u-4-24">
+                            <div class="box-border-right">
+                                {{guest[4]}}
+                            </div>
+                        </li>
 
-                            <li ng-click="order('twitterHandle')" class="email pure-u-4-24">
-                                <div class="box-border-right">
-                                    Twitter Handle
-                                </div>
-                            </li>
+                        <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-4-24">
+                            <div class="box-border-right">
+                                {{guest[5]}}
+                            </div>
+                        </li>
 
-                            <li ng-click="order('emailList')" class="email pure-u-2-24">
-                                <div class="box-border-right">
-                                    Email?
-                                </div>
-                            </li>
+                        <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-2-24">
+                            <div class="box-border-right">
+                                {{guest[6]}}
+                            </div>
+                        </li>
 
-                        <li ng-click="orderMember('membership')" class="interest pure-u-2-24">Membership?</li>
+                        <li ng-class-odd="'odd'" ng-class-even="'even'" class="interest pure-u-2-24">{{guest[7]}}</li>
                     </ul>
 
                 </div>
+            </div>
 
-            <div ng-repeat="guest in data | orderBy:predicate:reverse" class="list-item pure-u-1">
-                <ul class="categories">
-                    <li ng-class-odd="'odd'" ng-class-even="'even'" class = "time pure-u-2-24">
-                        <div class="box-border-right">
-                            {{guest[0] | date:"MM/dd/yyyy"}}
-                        </div>
-                    </li>
-
-                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-4-24">
-                        <div class="box-border-right">
-                            {{guest[1]}}
-                        </div>
-                    </li>
-
-                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-2-24">
-                        <div class="box-border-right">
-                            {{guest[2]}}
-                        </div>
-                    </li>
-
-                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-4-24">
-                        <div class="box-border-right">
-                            {{guest[3]}}
-                        </div>
-                    </li>
-
-                    <li ng-class-odd="'odd'" ng-class-even="'even'"  class="email pure-u-4-24">
-                        <div class="box-border-right">
-                            {{guest[4]}}
-                        </div>
-                    </li>
-
-                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-4-24">
-                        <div class="box-border-right">
-                            {{guest[5]}}
-                        </div>
-                    </li>
-
-                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-2-24">
-                        <div class="box-border-right">
-                            {{guest[6]}}
-                        </div>
-                    </li>
-
-                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="interest pure-u-2-24">{{guest[7]}}</li>
-                </ul>
+            <div class="pure-u-md-1-5 pure-u-lg-1-3 pure-u-1-12">
 
             </div>
-        </div>
-
-        <div class="pure-u-md-1-5 pure-u-lg-1-3 pure-u-1-12">
 
         </div>
-
     </div>
-</div>
+</body>
+</html>
