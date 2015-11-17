@@ -34,11 +34,9 @@ app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
 
     $http.get('/data').then(function(res){
 
-
-        $scope.getSignIn = function(){
             var signIns = [];
 
-            var data = [];
+            $scope.data = [];
 
             $scope.calledData = res.data;
 
@@ -50,7 +48,7 @@ app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
 
                 console.log("Called Data length: ", $scope.calledData.length);
 
-                console.log("Called Object length: ", $scope.calledData[i].length);
+                console.log("Called Object name", $scope.calledData[i].name);
 
                 dataObj.push($scope.calledData[i].temp_time, $scope.calledData[i].name, $scope.calledData[i].member, $scope.calledData[i].meeting_with, $scope.calledData[i].email, $scope.calledData[i].twitter);
                 if($scope.calledData[i].email_me == 0){
@@ -63,12 +61,13 @@ app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
                 } else {
                     dataObj.push("Yes");
                 }
-
-            data.push(dataObj);
+            console.log("pushed object", dataObj);
+            $scope.data.push(dataObj);
+            console.log("current data array", $scope.data);
             }
             console.log($scope.calledData);
-            return data;
-        }
+            return $scope.data;
+
     });
 
     //sort email list by interested in membership

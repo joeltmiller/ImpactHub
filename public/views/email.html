@@ -64,9 +64,33 @@
                                 </div>
                             </li>
 
+                            <li ng-click="order('member')" class="email pure-u-1-4">
+                                <div class="box-border-right">
+                                    Member
+                                </div>
+                            </li>
+
+                            <li ng-click="order('meetingWith')" class="email pure-u-1-4">
+                                <div class="box-border-right">
+                                    Meeting With
+                                </div>
+                            </li>
+
                             <li ng-click="order('email')" class="email pure-u-1-4">
                                 <div class="box-border-right">
                                     Email
+                                </div>
+                            </li>
+
+                            <li ng-click="order('twitterHandle')" class="email pure-u-1-4">
+                                <div class="box-border-right">
+                                    Twitter Handle
+                                </div>
+                            </li>
+
+                            <li ng-click="order('emailList')" class="email pure-u-1-4">
+                                <div class="box-border-right">
+                                    Put on Email List
                                 </div>
                             </li>
 
@@ -75,27 +99,51 @@
 
                 </div>
 
-            <div ng-repeat="guest in emails | orderBy:predicate:reverse" class="list-item pure-u-1">
+            <div ng-repeat="guest in data | orderBy:predicate:reverse" class="list-item pure-u-1">
                 <ul class="categories">
                     <li ng-class-odd="'odd'" ng-class-even="'even'" class = "time pure-u-1-4">
                         <div class="box-border-right">
-                            {{guest.temp_time | date:"MM/dd/yyyy 'at' h:mma"}}
+                            {{guest[0] | date:"MM/dd/yyyy 'at' h:mma"}}
                         </div>
                     </li>
 
                     <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-1-4">
                         <div class="box-border-right">
-                            {{guest.name}}
+                            {{guest[1]}}
+                        </div>
+                    </li>
+
+                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-1-4">
+                        <div class="box-border-right">
+                            {{guest[2]}}
+                        </div>
+                    </li>
+
+                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-1-4">
+                        <div class="box-border-right">
+                            {{guest[3]}}
                         </div>
                     </li>
 
                     <li ng-class-odd="'odd'" ng-class-even="'even'"  class="email pure-u-1-4">
                         <div class="box-border-right">
-                            {{guest.email}}
+                            {{guest[4]}}
                         </div>
                     </li>
 
-                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="interest pure-u-1-4">{{member(guest.membership)}}</li>
+                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-1-4">
+                        <div class="box-border-right">
+                            {{guest[5]}}
+                        </div>
+                    </li>
+
+                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-1-4">
+                        <div class="box-border-right">
+                            {{guest[6]}}
+                        </div>
+                    </li>
+
+                    <li ng-class-odd="'odd'" ng-class-even="'even'" class="interest pure-u-1-4">{{guest[7]}}</li>
                 </ul>
 
             </div>
