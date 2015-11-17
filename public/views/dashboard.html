@@ -45,6 +45,15 @@
                         <canvas tc-chartjs-pie chart-options="options" chart-data="monthData" auto-legend></canvas>
                     </v-pane-content>
                 </v-pane>
+
+                <v-pane>
+                    <v-pane-header>
+                        Totals by Month for Past Six Months
+                    </v-pane-header>
+                    <v-pane-content>
+                        <canvas tc-chartjs-bar chart-options="options2" chart-data="priorData" auto-legend></canvas>
+                    </v-pane-content>
+                </v-pane>
             </v-accordion>
         </div>
     </div>

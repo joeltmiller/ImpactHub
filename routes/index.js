@@ -168,10 +168,10 @@ router.get('/getSixMonthsMember', function(req, res) {
     });
 });
 
-request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username: 'IMHSP_API', password: 'p8nRDaD2X0wc' }},
-function(err, response, body) {
-    console.log(body);
-});
+//request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username: process.env.username, password: process.env.password }},
+//function(err, response, body) {
+//    console.log(body);
+//});
 
 request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username: process.env.username, password: process.env.password }},
     function(err, response, body) {
@@ -197,9 +197,9 @@ request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username
                 }
 
             };
-            console.log(sessionId);
+            //console.log(sessionId);
             request(options2, function(err, response, body) {
-                console.log(body);
+                //console.log(body);
             })
         }
 

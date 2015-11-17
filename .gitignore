@@ -6,3 +6,4 @@ images
 *.log
 ./views
 .env
+vendors
