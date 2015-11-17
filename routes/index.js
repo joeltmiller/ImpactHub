@@ -165,7 +165,6 @@ request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username
 function(err, response, body) {
     console.log(body);
 });
->>>>>>> Stashed changes
 
 request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username: process.env.username, password: process.env.password }},
     function(err, response, body) {
@@ -215,45 +214,6 @@ request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username
         //console.log(response);
     });
 
-<<<<<<< Updated upstream
-//request.get('https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey',
-//    function(err, response, body) {
-//        console.log(body);
-//    });
-=======
-//ALSO ACTIVATE REQUIRE REQUEST UP TOP!
-
-//request.post('https://api.thedatabank.com/v1.0/login.asp?').auth('IMPSP_API', 'p8nRDaD2X0wc', false).on('response', function(response) {
-//    console.log(response.statusCode);
-//    console.log(response.headers['content-type']);
-//    console.log(response.body);
-//});
-
-//request.get('https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey&callback=JSON_CALLBACK').on('response', function (response) {
-//    console.log(response.statusCode);
-//    //console.log(response.headers['content-type']);
-//    console.log(response);
-//});
-
-//request.get({url: "https://api.thedatabank.com/v1.0/login.asp?username=IMHSP_API&password=p8nRDaD2X0wc"}, function(e, r, json) {
-//    console.log(json);
-//    console.log(e);
-//    console.log(r);
-//});
-
-//var options = {
-//    //url: 'https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey'
-//    url:'https://api.thedatabank.com/v1.0/login.asp?username=IMHSP_API&password=p8nRDaD2X0wc'
-//};
-//function callback(error, response, body) {
-//    if (!error && response.statusCode == 200) {
-//        var info = JSON.parse(body);
-//        console.log(response);
-//        console.log(info, "This was the info");
-//    }
-//}
-//request(options, callback);
->>>>>>> Stashed changes
 
 
 //ALSO ACTIVATE REQUIRE REQUEST UP TOP!
