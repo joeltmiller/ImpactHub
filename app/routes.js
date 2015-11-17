@@ -32,10 +32,6 @@ module.exports = function(app, passport) {
     app.get('/dashboard', isLoggedIn, function(req, res) {
         res.sendFile(path.join(__dirname, "../public/views/dashboard.html"));
     });
-
-    app.get('/email', isLoggedIn, function(req, res) {
-        res.sendFile(path.join(__dirname, "../public/views/email.html"));
-    });
 };
 
 function isLoggedIn(req, res, next) {

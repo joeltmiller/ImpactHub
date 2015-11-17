@@ -3,11 +3,6 @@ body {
   background-image: url("/assets/gun_metal2.png");
 }
 
-.container{
-  width: 80%;
-  margin: 0 auto;
-}
-
 h1.header{
   color: white;
 }
@@ -77,9 +72,15 @@ a{
 
 .email-header{
   width: 50%;
-  position: absolute;
+  /*position: absolute;*/
+  float: left;
   background-color: #FFFFFF;
-  padding: 1% 100vw 1% 0;
+  padding: 1% 100vw 0 0;
+
+  -webkit-transition:0.2s linear all;
+  -moz-transition:0.2s linear all;
+  -o-transition:0.2s linear all;
+  transition:0.2s linear all;
 }
 
 .email-content {
@@ -101,11 +102,52 @@ a{
   background-color: #FFFFFF;
   position: fixed;
   z-index: 10;
+  /*height: auto;*/
+
+  -webkit-transition:0.2s linear all;
+  -moz-transition:0.2s linear all;
+  -o-transition:0.2s linear all;
+  transition:0.2s linear all;
+
+}
+
+.navFix {
+  position: relative;
+  height: 100%;
+}
+
+.big {
+  height: auto;
+}
+
+.big img{
+  width: 50%;
+}
+
+.small {
+  height: 10%;
+}
+
+.small img{
+  width: 20%;
+}
+
+.small ul{
+  margin-top: -2%;
+
 }
 
 .header-wrapper button{
   z-index: 15;
   top: 100px;
+}
+
+.top-menu {
+  /*position: absolute;*/
+  /*float: right;*/
+  /*position: inherit;*/
+  right: 0;
+  bottom: 0;
 }
 
 .image-wrapper{
@@ -302,6 +344,7 @@ button a{
 .topLabel li{
   font-weight: bold;
   color: #333333;
+  font-size: 12px;
   background-color: #ffffff;
   height: 50px;
   line-height: 50px;
@@ -315,6 +358,7 @@ button a{
 
 .box-border-right{
   border-right: black 1px solid;
+  height: inherit;
 }
 
 .list-item ul{
@@ -326,11 +370,11 @@ button a{
   /*background-color: #d6d6d6;*/
   height: 50px;
   line-height: 50px;
-  font-size: 14px;
+  font-size: 12px;
   margin-bottom: 1%;
 }
 
-.list-item li:nth-child(4){
+.list-item li:nth-child(8){
   border-radius: 0 10px 10px 0;
 }
 
@@ -537,8 +581,4 @@ tbody tr{
 
 v-pane-header.ng-scope{
   color: white;
-}
-
-.pure-u-1.whoshereContent{
-  background-color: #812926;
 }

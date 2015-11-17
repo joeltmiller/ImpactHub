@@ -1,7 +1,19 @@
-var app = angular.module('email', ['ngSanitize', 'ngCsv']);
-
-app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
+app.controller('EmailController', ['$scope', '$http', '$window', function($scope, $http, $window) {
     $scope.message = "Email Controller is working!";
+
+    $scope.navClass = 'big';
+    angular.element($window).bind(
+        "scroll", function() {
+            //console.log(window.pageYOffset);
+            if(window.pageYOffset > 0) {
+                $scope.navClass = 'small';
+            } else {
+                $scope.navClass = 'big';
+            }
+            $scope.$apply();
+        });
+
+
 
     $scope.emails = [];
 
@@ -50,7 +62,7 @@ app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
 
                 console.log("Called Data length: ", $scope.calledData.length);
 
-                console.log("Called Object member", $scope.calledData[i].member);
+                console.log("Called Object name", $scope.calledData[i].name);
 
                 dataObj.push($scope.calledData[i].temp_time, $scope.calledData[i].name, $scope.calledData[i].member, $scope.calledData[i].meeting_with, $scope.calledData[i].email, $scope.calledData[i].twitter);
                 if($scope.calledData[i].email_me == 0){

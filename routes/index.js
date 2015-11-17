@@ -29,7 +29,7 @@ router.post('/guest', function (req, res) {
 
     var name = req.body.name;
     var email = req.body.email;
-    var member = "No, I'm a Guest";
+    var member = 0;
     var meeting = req.body.meeting;
     var twitter = req.body.twitter;
     var company = req.body.company;
@@ -72,7 +72,7 @@ router.get('/data', function (req, res, next) {
 });
 
 router.get('/guestEmails', function (req, res, next) {
-    connection.query("SELECT * FROM responses WHERE member like '%No%'  AND email IS NOT NULL ORDER BY temp_time DESC", function (err, rows) {
+    connection.query('SELECT * FROM responses WHERE temp_member = 0 AND email IS NOT NULL ORDER BY temp_time DESC', function (err, rows) {
         if (err) throw err;
         res.json(rows);
     });
@@ -81,13 +81,6 @@ router.get('/guestEmails', function (req, res, next) {
 
 router.get('/perWeek', function(req, res) {
     connection.query('SELECT * FROM responses WHERE temp_time BETWEEN NOW()-INTERVAL 7 DAY AND NOW()', function (err, rows) {
-        if (err) throw err;
-        res.json(rows);
-    });
-});
-
-router.get('/perDay', function(req, res) {
-    connection.query('SELECT * FROM responses WHERE temp_time > CURDATE();', function (err, rows) {
         if (err) throw err;
         res.json(rows);
     });
@@ -155,14 +148,14 @@ var cookie2 = '';
 //};
 
 router.get('/getSixMonthsGuest', function(req, res) {
-    connection.query("SELECT * FROM responses where temp_time  > DATE_SUB(now(), INTERVAL 6 MONTH) and member like '%No%'", function(err, rows) {
+    connection.query('SELECT * FROM responses where temp_time  > DATE_SUB(now(), INTERVAL 6 MONTH) and temp_member = 0', function(err, rows) {
         if(err) throw err;
         res.json(rows);
     });
 });
 
 router.get('/getSixMonthsMember', function(req, res) {
-    connection.query("SELECT * FROM responses where temp_time  > DATE_SUB(now(), INTERVAL 6 MONTH) and member like '%Yes%'", function(err, rows) {
+    connection.query('SELECT * FROM responses where temp_time  > DATE_SUB(now(), INTERVAL 6 MONTH) and temp_member = 1', function(err, rows) {
         if(err) throw err;
         res.json(rows);
     });
