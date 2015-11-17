@@ -5,13 +5,16 @@ var router = express.Router();
 
 var moment = require('moment');
 var request = require('request');
+var env = require('dotenv');
+
+env.load();
 
 //Loading in the sql database
 var connection = mysql.createConnection({
-    host: '66.147.244.241',
-    user: 'merkedyo_impact',
-    password: 'test123',
-    database: 'merkedyo_impact_hub'
+    host: process.env.host,
+    user: process.env.dbuser,
+    password: process.env.dbpass,
+    database: process.env.database
 });
 
 
@@ -144,8 +147,7 @@ var cookie2 = '';
 //    request(options, callback);
 //};
 
-
-request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username: 'IMHSP_API', password: 'p8nRDaD2X0wc' }},
+request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username: process.env.username, password: process.env.password }},
     function(err, response, body) {
         cookie1= (response.rawHeaders[11]);
         cookie2= (response.rawHeaders[13]);
@@ -186,7 +188,7 @@ request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username
         //};
         //request(options2, callback);
 
-        //request.post({url:'https://api.thedatabank.com/v1.0/secure/init.asp?', form: {username: 'IMHSP_API', password: 'p8nRDaD2X0wc' }},
+        //request.post({url:'https://api.thedatabank.com/v1.0/secure/init.asp?', form: {username: process.env.username, password: process.env.password }},
         //function(err, response, body) {
         //    console.log(response);
         //});

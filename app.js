@@ -17,10 +17,10 @@ require('./config/passport')(passport);
 //mySQL Setup
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-  host: '66.147.244.241',
-  user: 'merkedyo_impact',
-  password: 'test123',
-  database: 'merkedyo_impact_hub'
+  host: process.env.host,
+  user: process.env.dbuser,
+  password: process.env.dbpass,
+  database: process.env.database
 });
 
 connection.connect(function(err){
