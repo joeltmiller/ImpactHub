@@ -1,46 +1,31 @@
 <div ng-controller="DashboardController">
-    <p>{{message}}</p>
     <div>
-        <h1>Impact Hub Dashboard</h1>
+        <h1 class="header">Impact Hub Dashboard</h1>
         <button><a href="/email">Email List</a></button>
         <button><a href="/logout">Log Out</a></button>
     </div>
+
     <div class="pure-g">
         <div class="pure-u-1-2">
-            <canvas tc-chartjs-pie chart-options="options" chart-data="data" auto-legend></canvas>
-        </div>
-        <div class="pure-u-1-2">
-            <canvas tc-chartjs-pie chart-options="options" chart-data="data" auto-legend></canvas>
-        </div>
-    </div>
-    <div>
-        <h3>Total Guests Past Week</h3>
-        <h2>{{guestWeek.length}}</h2>
-    </div>
-    <div>
-        <h3>Total Members Past Week</h3>
-        <h2>{{memberWeek.length}}</h2>
-    </div>
-    <div>
-        <h3>Total This Month</h3>
-        <h2>{{curMonthTot.length}}</h2>
-    </div>
-    <div>
-        <h3>Total Prior Month</h3>
-        <h2>{{prMonthTot.length}}</h2>
-    </div>
-    <div>
-        <h3>#'s in space</h3>
-    </div>
-    <div>
-        <h3>New Members</h3>
-    </div>
-    <div>
-        <h3>Lost Members</h3>
-    </div>
-    <div>
-        <h4>All the graphs!!</h4>
-        <img src="http://cdn.meme.am/instances/62989032.jpg">
-    </div>
+            <v-accordion class="vAccordion--default">
+                <v-pane expanded>
+                    <v-pane-header>
+                        Guests and Member Totals for One Week
+                    </v-pane-header>
+                    <v-pane-content>
+                        <canvas tc-chartjs-pie chart-options="options" chart-data="weekData" auto-legend></canvas>
+                    </v-pane-content>
+                </v-pane>
 
+                <v-pane>
+                    <v-pane-header>
+                        Guests and Member Totals for Six Months
+                    </v-pane-header>
+                    <v-pane-content>
+                        <canvas tc-chartjs-pie chart-options="options" chart-data="monthData" auto-legend></canvas>
+                    </v-pane-content>
+                </v-pane>
+            </v-accordion>
+        </div>
+    </div>
 </div>

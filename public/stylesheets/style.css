@@ -3,6 +3,10 @@ body {
   background-image: url("/assets/gun_metal2.png");
 }
 
+h1.header{
+  color: white;
+}
+
 ul {
   list-style-type: none;
   margin: 0;
@@ -524,4 +528,8 @@ tbody tr{
     -moz-transform:scale(.3);
     background-color:rgb(255,255,255);
   }
+}
+
+v-pane-header.ng-scope{
+  color: white;
 }

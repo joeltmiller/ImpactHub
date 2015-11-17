@@ -34,7 +34,7 @@ module.exports=function(passport) {
                     if (err)
                         return done(err);
                     if (rows.length) {
-                        return done(null, false, res.send("User already taken"));
+                        return done(null, false);
                     } else {
                         // if there is no user with that username
                         // create the user
@@ -65,14 +65,14 @@ module.exports=function(passport) {
             function(req, username, password, done) { // callback with email and password from our form
                 connection.query("SELECT * FROM admin WHERE username = ?",[username], function(err, rows){
                     if (err)
-                        return done(err);
+                        console.log("error");
                     if (!rows.length) {
-                        return done(null, false, res.send("Incorrect User or Password"));
+                        return done(null, false);
                     }
 
                     // if the user is found but the password is wrong
                     if (!bcrypt.compareSync(password, rows[0].password))
-                        return done(null, false, res.send("Incorrect User or Password"));
+                        return done(null, false);
 
                     // all is well, return successful user
                     return done(null, rows[0]);

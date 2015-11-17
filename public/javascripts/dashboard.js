@@ -1,4 +1,4 @@
-var app = angular.module('dashboard', ['ngRoute', 'tc.chartjs', 'ngSanitize', 'ngCsv']);
+var app = angular.module('dashboard', ['ngRoute', 'tc.chartjs', 'ngSanitize', 'ngCsv','vAccordion']);
 
 
 app.config(function($routeProvider, $locationProvider){
@@ -13,7 +13,6 @@ app.config(function($routeProvider, $locationProvider){
         })
         .otherwise({
             redirectTo: '/graphs'
-
         });
 
 
