@@ -20,8 +20,6 @@ app.controller('GuestFormController', ['$scope', '$http', '$location', function(
              company: $scope.company,
              membership: $scope.checkboxMember,
              email_opt_in: $scope.checkboxEmail
-
-
          };
         console.log($scope.postData);
 

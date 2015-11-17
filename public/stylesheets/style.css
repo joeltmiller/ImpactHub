@@ -3,6 +3,11 @@ body {
   background-image: url("/assets/gun_metal2.png");
 }
 
+.container{
+  width: 80%;
+  margin: 0 auto;
+}
+
 h1.header{
   color: white;
 }
@@ -532,4 +537,8 @@ tbody tr{
 
 v-pane-header.ng-scope{
   color: white;
+}
+
+.pure-u-1.whoshereContent{
+  background-color: #812926;
 }
