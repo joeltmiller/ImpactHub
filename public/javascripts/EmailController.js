@@ -48,7 +48,7 @@ app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
 
                 console.log("Called Data length: ", $scope.calledData.length);
 
-                console.log("Called Object name", $scope.calledData[i].name);
+                console.log("Called Object member", $scope.calledData[i].member);
 
                 dataObj.push($scope.calledData[i].temp_time, $scope.calledData[i].name, $scope.calledData[i].member, $scope.calledData[i].meeting_with, $scope.calledData[i].email, $scope.calledData[i].twitter);
                 if($scope.calledData[i].email_me == 0){
