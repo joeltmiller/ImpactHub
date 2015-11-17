@@ -1,6 +1,5 @@
-/**
- * Created by davidhoverson on 11/6/15.
- */
+var app = angular.module('dashboard', ['tc.chartjs', 'vAccordion']);
+
 app.controller('DashboardController', ['$scope', '$http', function($scope, $http) {
 
 

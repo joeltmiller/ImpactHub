@@ -3,10 +3,10 @@
  */
 module.exports = {
     'connection': {
-        'host': 'merkedyou.com',
-        'user': 'merkedyo_impact',
-        'password': 'test123'
+        'host': process.env.host,
+        'user': process.env.dbuser,
+        'password': process.env.dbpass
     },
-    'database': 'merkedyo_impact_hub',
+    'database': process.env.database,
     'users_table': 'users'
 };

@@ -1,3 +1,5 @@
+var app = angular.module('email', ['ngSanitize', 'ngCsv']);
+
 app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
     $scope.message = "Email Controller is working!";
 
