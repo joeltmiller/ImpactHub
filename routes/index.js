@@ -86,8 +86,15 @@ router.get('/perWeek', function(req, res) {
     });
 });
 
-router.get('/perDay', function(req, res) {
-    connection.query('SELECT * FROM responses WHERE temp_time > CURDATE();', function (err, rows) {
+router.get('/guestsPerDay', function(req, res) {
+    connection.query("SELECT * FROM responses WHERE temp_time > CURDATE() AND member LIKE '%No%';", function (err, rows) {
+        if (err) throw err;
+        res.json(rows);
+    });
+});
+
+router.get('/membersPerDay', function(req, res) {
+    connection.query("SELECT * FROM responses WHERE temp_time > CURDATE() AND member LIKE '%Yes%';", function (err, rows) {
         if (err) throw err;
         res.json(rows);
     });

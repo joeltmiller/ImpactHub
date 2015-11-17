@@ -591,3 +591,20 @@ v-pane-header.ng-scope{
 .pure-u-1.whoshereContent{
   background-color: #812926;
 }
+
+/* Changes for Show People In Building Page*/
+p.person{
+  padding: 2em;
+  background: white;
+  color: black;
+}
+
+.spaceDiv{
+  width: 15%;
+}
+
+.peopleDiv{
+  background-color: #812926;
+  padding: 1.5em;
+}
+

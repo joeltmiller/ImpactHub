@@ -6,11 +6,15 @@
  */
 app.controller('WhosHereController', ['$scope', '$http', function($scope, $http) {
 
-    $scope.getUsers = [];
+    $scope.getGuest = [];
+    $scope.getMember = [];
 
-    $http.get('/perDay').then(function(req){
-        $scope.getUsers = req.data;
-        console.log(req.data);
+    $http.get('/guestsPerDay').then(function(req){
+       $scope.getGuest = req.data;
+    });
+
+    $http.get('/membersPerDay').then(function(req){
+        $scope.getMember = req.data;
     });
 
 }]);
