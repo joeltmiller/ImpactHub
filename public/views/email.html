@@ -9,6 +9,8 @@
     <script src="vendors/angular/angular.js"></script>
     <script src="vendors/angular-sanitize/angular-sanitize.js"></script>
     <script src="vendors/ng-csv/build/ng-csv.js"></script>
+    <script src="vendors/datejs/date.js"></script>
+    <script src="vendors/moment/moment.min.js"></script>
     <script src="javascripts/EmailController.js"></script>
 
 </head>
@@ -32,11 +34,10 @@
 
                     <fieldset>
                         <label for="time">Time Period</label>
-                            <select id="time">
-                                <option>1 week</option>
-                                <option>1 month</option>
-                                <option>6 months</option>
-                                <option>All</option>
+                            <select ng-options="obj.val as obj.txt for obj in dateOptions"
+                                    ng-change="getDateObj()"
+                                    ng-model="timeselect" id="time">
+
                             </select>
 
                             <label for="email">Email</label>
@@ -114,7 +115,7 @@
 
                 </div>
 
-            <div ng-repeat="guest in data | orderBy:predicate:reverse" class="list-item pure-u-1">
+            <div ng-repeat="guest in data track by $index | orderBy:predicate:reverse" class="list-item pure-u-1">
                 <ul class="categories">
                     <li ng-class-odd="'odd'" ng-class-even="'even'" class = "time pure-u-1-4">
                         <div class="box-border-right">
