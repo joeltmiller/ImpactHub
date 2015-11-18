@@ -16,6 +16,29 @@
 
                 <h1>Hello!</h1>
                 <h2>Enter login code</h2>
+                <div class="pure-u-1-6"></div>
+                <div class="password pure-u-2-3">
+                    <div class="pure-g">
+                        <div class="pure-u-1-4">
+                            <i ng-show="passwordOne" class="fa fa-circle pure-img"></i>
+                        </div>
+
+                        <div class="pure-u-1-4">
+                            <i ng-show="passwordTwo" class="fa fa-circle pure-img"></i>
+                        </div>
+
+                        <div class="pure-u-1-4">
+                            <i ng-show="passwordThree" class="fa fa-circle pure-img"></i>
+                        </div>
+
+                        <div class="pure-u-1-4">
+                            <i ng-show="passwordFour" class="fa fa-circle pure-img"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="pure-u-1-6"></div>
+
+
 
 
                 <form name="PINform" id="PINform" autocomplete="off">
@@ -42,7 +65,7 @@
                     </div>
                     <div class="pure-g">
                         <div class="pure-u-sm-3-24 pure-u-md-1-8 pure-u-lg-1-5 pure-u-3-24"></div>
-                            <a href="/" class="keypadButton pure-u-sm-6-24 pure-u-md-1-4 pure-u-lg-1-5 pure-button pure-u-6-24"><i class="fa fa-arrow-left fa-2x"></i></a>
+                            <a ng-click="passwordDelete()" class="keypadButton pure-u-sm-6-24 pure-u-md-1-4 pure-u-lg-1-5 pure-button pure-u-6-24"><i class="fa fa-arrow-left fa-2x"></i></a>
                             <a ng-click="keypadPress(0)" class="keypadButton pure-u-sm-6-24 pure-u-md-1-4 pure-u-lg-1-5 pure-button pure-u-6-24">0</a>
                             <a ng-click="submitCode()" class="keypadButton pure-u-sm-6-24 pure-u-md-1-4 pure-u-lg-1-5 pure-button pure-u-6-24"><i class="fa fa-sign-in fa-2x pure-img"></i><a/>
                         <div class="pure-u-sm-3-24 pure-u-md-1-8 pure-u-lg-1-5 pure-u-3-24"></div>

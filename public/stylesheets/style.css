@@ -75,6 +75,11 @@ a{
   /*margin-bottom: 20%;*/
 }
 
+.password i{
+  float: left;
+  color: #FFFFFF;
+}
+
 .email-header{
   width: 50%;
   /*position: absolute;*/
