@@ -155,6 +155,26 @@ router.get('/getSixMonthsMember', function(req, res) {
     });
 });
 
+router.get('/memberverify', function(req, res){
+    //console.log('hitting member verify route', req.query);
+    var codenumber = req.query.member;
+    //console.log(codenumber);
+
+    var memberIDverify = {
+        url: serverURL +  'SearchMembers.asp?MemberID=' + codenumber,
+        headers: {
+            Cookie: cookie1 + newCookieHeader
+        }
+    };
+
+    request(memberIDverify, function(err, response, body){
+        res.json(body);
+    })
+
+
+
+});
+
 //thedatabank.com API setup below
 
 var serverURL = '';

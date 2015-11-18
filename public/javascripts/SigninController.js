@@ -9,6 +9,7 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
     $scope.passwordTwo = false;
     $scope.passwordThree = false;
     $scope.passwordFour = false;
+    $scope.memberVerify = [];
 
 
 
@@ -113,25 +114,20 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
             $location.path("/admin");
 
         }else if($scope.memberID.length == 4) {
-            var code = parseInt($scope.memberID);
-            //console.log('this should be an int: ', code);
+            var code = {'member':parseInt($scope.memberID)};
+            console.log('this should be an int: ', code);
 
 
 
             $http({
-                method: 'JSONP',
-                url:"https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?MemberID=" + $scope.memberID + "&callback=JSON_CALLBACK"
+                method: 'GET',
+                url:"/memberverify",
+                params: {'member' : $scope.memberID}
             }).then(function(response){
-                console.log("Query from dashboard", response.data);
-                var memberVerify = response.data;
-                if(memberVerify.Result == "Success"){
-                    console.log("Hello, ", memberVerify.Members[0].FullName1);
-                    $scope.memberSuccess = memberVerify.Members[0].FullName1;
-                    $location.path("/thanks");
-                }else{
-                    alert("member not found");
-                    $scope.memberID = '';
-                }
+                $scope.memberVerify = angular.fromJson(response.data);
+                console.log("this is member info: ", $scope.memberVerify);
+                $scope.checkMemberStatus();
+
 
             }, function errorCallBack(response){
 
@@ -152,7 +148,21 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
                 $scope.passwordThree = false;
                 $scope.passwordFour = false;
             }
-    }
+    };
 
+    $scope.checkMemberStatus = function(){
+        if($scope.memberVerify.Result == "Success"){
+            console.log("Hello, ", $scope.memberVerify.Members[0].FullName1);
+            $scope.memberSuccess = $scope.memberVerify.Members[0].FullName1;
+            $location.path("/thanks");
+        }else{
+            alert("member not found");
+            $scope.memberID = '';
+            $scope.passwordOne = false;
+            $scope.passwordTwo = false;
+            $scope.passwordThree = false;
+            $scope.passwordFour = false;
+        }
+    }
 
 }]);
