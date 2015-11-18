@@ -80,7 +80,7 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
 
                 $scope.calledData = res.data;
 
-                console.log("Called Object name", $scope.calledData[i].name);
+                //console.log("Called Object name", $scope.calledData[i].name);
 
 
                 console.log("pulled data", res.data);
