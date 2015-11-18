@@ -101,26 +101,70 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
                             }
                             $scope.fiveMonTot = $scope.fiveMonMem.concat($scope.fiveMonGue);
 
-                            console.log($scope.fiveMonMem.length);
-                            console.log($scope.fiveMonGue.length);
-                            console.log($scope.fiveMonTot.length);
+
+                            var first = '';
+                            var second= '';
+                            var third = '';
+                            var fourth = '';
+                            var fifth = '';
+                            var sixth = '';
+                            if ($scope.fiveMonGue[0].temp_time.match(/^....-01-................$/)) {
+                                first = 'January'; second = 'February'; third = 'March';
+                                fourth ='April'; fifth = 'May'; sixth = 'June';
+                            } else if ($scope.fiveMonGue[0].temp_time.match(/^....-02-................$/)) {
+                                first = 'February'; second = 'March'; third = 'April';
+                                fourth ='May'; fifth = 'June'; sixth = 'July';
+                            } else if ($scope.fiveMonGue[0].temp_time.match(/^....-03-................$/)) {
+                                first = 'March'; second = 'April'; third = 'May';
+                                fourth ='June'; fifth = 'July'; sixth = 'August';
+                            } else if ($scope.fiveMonGue[0].temp_time.match(/^....-04-................$/)) {
+                                first = 'April'; second = 'May'; third = 'June';
+                                fourth ='July'; fifth = 'August'; sixth = 'September';
+                            } else if ($scope.fiveMonGue[0].temp_time.match(/^....-05-................$/)) {
+                                first = 'May'; second = 'June'; third = 'July';
+                                fourth ='August'; fifth = 'September'; sixth = 'October';
+                            } else if ($scope.fiveMonGue[7].temp_time.match(/^....-06-................$/)) {
+                                first = 'June'; second = 'July'; third = 'August';
+                                fourth ='September'; fifth = 'October'; sixth = 'November';
+                            } else if ($scope.fiveMonGue[0].temp_time.match(/^....-07-................$/)) {
+                                first = 'July'; second = 'August'; third = 'September';
+                                fourth ='October'; fifth = 'November'; sixth = 'December';
+                            } else if ($scope.fiveMonGue[0].temp_time.match(/^....-08-................$/)) {
+                                first = 'August'; second = 'September'; third = 'October';
+                                fourth ='November'; fifth = 'December'; sixth = 'January';
+                            } else if ($scope.fiveMonGue[0].temp_time.match(/^....-09-................$/)) {
+                                first = 'September'; second = 'October'; third = 'November';
+                                fourth ='December'; fifth = 'January'; sixth = 'February';
+                            } else if ($scope.fiveMonGue[0].temp_time.match(/^....-10-................$/)) {
+                                first = 'October'; second = 'November'; third = 'December';
+                                fourth ='January'; fifth = 'February'; sixth = 'March';
+                            } else if ($scope.fiveMonGue[0].temp_time.match(/^....-11-................$/)) {
+                                first = 'November'; second = 'December'; third = 'January';
+                                fourth ='February'; fifth = 'March'; sixth = 'April';
+                            } else if ($scope.fiveMonGue[0].temp_time.match(/^....-12-................$/)) {
+                                first = 'December'; second = 'January'; third = 'February';
+                                fourth ='March'; fifth = 'April'; sixth = 'May';
+                            } else {
+                                first = 'No Data Yet';
+                            }
+
                             $scope.priorData = {
-                                labels: ['June', 'July', 'August', 'September', 'October', 'November'],
+                                labels: [first, second, third, fourth, fifth, sixth],
                                 datasets: [
                                     {
                                         label: 'Guest',
-                                        fillColor: 'rgba(220,220,220,0.5)',
+                                        fillColor: 'rgb(153,155,155)',
                                         strokeColor: 'rgba(220,220,220,0.8)',
-                                        highlightFill: 'rgba(220,220,220,0.75)',
+                                        highlightFill: 'rgb(211,211,211)',
                                         highlightStroke: 'rgba(220,220,220,1)',
                                         data: [$scope.fiveMonGue.length, $scope.fourMonGue.length, $scope.threeMonGue.length, $scope.twoMonGue.length, $scope.prMonthGue.length, $scope.curMonthGue.length]
                                     },
                                     {
                                         label: 'Member',
-                                        fillColor: 'rgba(129,41,38,0.5)',
-                                        strokeColor: 'rgba(129,41,38,0.8)',
-                                        highlightFill: 'rgba(255,90,94,0.75)',
-                                        highlightStroke: 'rgba(255,90,94,1)',
+                                        fillColor: 'rgb(129,41,38)',
+                                        strokeColor: 'rgba(220,220,220,0.8)',
+                                        highlightFill: 'rgb(255,90,94)',
+                                        highlightStroke: 'rgba(220,220,220,1)',
                                         data: [$scope.fiveMonMem.length, $scope.fourMonMem.length, $scope.threeMonMem.length, $scope.twoMonMem.length, $scope.prMonthMem.length, $scope.curMonthMem.length]
                                     }
                                 ]
@@ -139,7 +183,7 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
                                 scaleShowGridLines : true,
 
                                 //String - Colour of the grid lines
-                                scaleGridLineColor : "rgba(0,0,0,.05)",
+                                scaleGridLineColor : "rgba(255,255,255,0.1)",
 
                                 //Number - Width of the grid lines
                                 scaleGridLineWidth : 1,
@@ -148,7 +192,7 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
                                 barShowStroke : true,
 
                                 //Number - Pixel width of the bar stroke
-                                barStrokeWidth : 2,
+                                barStrokeWidth : 1,
 
                                 //Number - Spacing between each of the X value sets
                                 barValueSpacing : 5,
@@ -166,10 +210,6 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
             });
         });
     });
-
-
-    $scope.message = "Dashboard Controller is Working";
-
 
     $scope.guestWeek = [];
     $scope.memberWeek = [];
@@ -234,8 +274,6 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
 
             $scope.sixMonthsMember = res.data;
 
-
-
             // Chart.js Data
             $scope.monthData = {
                 labels: ["Guest","Member"],
@@ -277,8 +315,6 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
 
         });
     });
-
-
 
     // Chart.js Options
     $scope.options = {
