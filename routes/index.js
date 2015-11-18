@@ -76,7 +76,6 @@ router.get('/guestEmails', function (req, res, next) {
         if (err) throw err;
         res.json(rows);
     });
-    //test();
 });
 
 router.get('/perWeek', function(req, res) {
@@ -142,25 +141,6 @@ router.get('/priorFiveMonth', function(req, res) {
     });
 });
 
-var sessionId = '';
-var cookie1 = '';
-var cookie2 = '';
-//var test = function() {
-//    console.log(sessionId, " Global ID");
-//    var options = {
-//        url: 'https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey',
-//        headers: {
-//            Cookie: cookie1,
-//            SessionID: sessionId
-//        }
-//    };
-//    function callback(error, response, body) {
-//        var info = JSON.parse(body);
-//        console.log(info);
-//    }
-//    request(options, callback);
-//};
-
 router.get('/getSixMonthsGuest', function(req, res) {
     connection.query("SELECT * FROM responses where temp_time  > DATE_SUB(now(), INTERVAL 6 MONTH) and member like '%No%'", function(err, rows) {
         if(err) throw err;
@@ -175,62 +155,53 @@ router.get('/getSixMonthsMember', function(req, res) {
     });
 });
 
-//request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username: process.env.username, password: process.env.password }},
-//function(err, response, body) {
-//    console.log(body);
-//});
+//thedatabank.com API setup below
 
+var serverURL = '';
+var cookie1 = '';
+var newCookieHeader = '';
 request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username: process.env.username, password: process.env.password }},
     function(err, response, body) {
-        cookie1= (response.rawHeaders[11]);
-        cookie2= (response.rawHeaders[13]);
-        console.log(cookie1);
+        cookie1= (response.headers['set-cookie'][0]);
+        cookie2= (response.headers['set-cookie'][1]);
+        //console.log("This is var cookie1: ", cookie1);
         var options = {
             url: 'https://api.thedatabank.com/v1.0/secure/init.asp',
             headers: {
                 Cookie: cookie1
-                //Cookie: cookie2
             }
         };
         function callback(error, response, body) {
+            //console.log("This is the successful redirect body: ", body);
             var data = JSON.parse(body);
-            sessionId = data.SessionID;
-            console.log(body);
+            newCookieHeader = response.headers['set-cookie'][0];
+            serverURL = data.ServerURL;
             var options2 = {
-                url: 'https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey',
+                url: serverURL + 'SearchMembers.asp?lastname=bailey',
                 headers: {
-                    Cookie: cookie1 + cookie2
-
+                    Cookie: cookie1 + newCookieHeader
                 }
 
             };
             //console.log(sessionId);
-            request(options2, function(err, response, body) {
+            request(options2, function (err, response, body) {
                 //console.log(body);
+
+                var newCallOptions = {
+                    url: 'https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?MemberID=7170',
+                    headers: {
+                        Cookie: cookie1 + newCookieHeader
+                    }
+                };
+
+                request(newCallOptions, function (err, response, body) {
+                    console.log('Second call to server', body);
+                })
             })
         }
 
         request(options, callback);
 
-        //var options2 = {
-        //    url: 'https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey',
-        //    headers: {
-        //        Cookie: cookie1,
-        //        SessionID: sessionId
-        //    }
-        //};
-        //request(options2, callback);
-
-        //request.post({url:'https://api.thedatabank.com/v1.0/secure/init.asp?', form: {username: process.env.username, password: process.env.password }},
-        //function(err, response, body) {
-        //    console.log(response);
-        //});
-        //console.log(response);
     });
-
-
-
-//ALSO ACTIVATE REQUIRE REQUEST UP TOP!
-
 
 module.exports = router;

@@ -16,7 +16,9 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
 
     $http({
         method:'JSONP',
+
         url:"https://api.thedatabank.com/v1.0/login.asp?username=&password="
+
     }).then(function(response) {
         console.log("Auth url and response.data", response.data);
     }, function errorCallBack(response){
