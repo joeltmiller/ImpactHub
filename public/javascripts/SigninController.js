@@ -30,32 +30,40 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
 
     $scope.keypadPress = function(value){
         console.log('pressing a button that is ', value);
-        $scope.memberID +=  value;
+
+        if($scope.memberID.length < 5) {
+            $scope.memberID += value;
 
 
-        //Shows password circles on keypad
-        switch ($scope.memberID.length){
-            case 1:
-                $scope.passwordOne = true;
-                break;
-            case 2:
-                $scope.passwordTwo = true;
-                break;
-            case 3:
-                $scope.passwordThree = true;
-                break;
-            case 4:
-                $scope.passwordFour = true;
-                break;
-            case 5:
-                alert('You have entered too many digits');
-                break;
-            default:
-                $scope.passwordOne = false;
-                $scope.passwordTwo = false;
-                $scope.passwordThree = false;
-                $scope.passwordFour = false;
+            //Shows password circles on keypad
+            switch ($scope.memberID.length) {
+                case 1:
+                    $scope.passwordOne = true;
+                    break;
+                case 2:
+                    $scope.passwordTwo = true;
+                    break;
+                case 3:
+                    $scope.passwordThree = true;
+                    break;
+                case 4:
+                    $scope.passwordFour = true;
+                    break;
+                case 5:
+                    alert('You have entered too many digits');
+                    $scope.memberID = '';
+                    $scope.passwordOne = false;
+                    $scope.passwordTwo = false;
+                    $scope.passwordThree = false;
+                    $scope.passwordFour = false;
+                    break;
+                default:
+                    $scope.passwordOne = false;
+                    $scope.passwordTwo = false;
+                    $scope.passwordThree = false;
+                    $scope.passwordFour = false;
 
+            }
         }
 
     };
@@ -100,9 +108,15 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
 
     $scope.submitCode = function(){
 
-        if($scope.memberID.length == 4) {
+
+        if($scope.memberID === '7170'){
+            $location.path("/admin");
+
+        }else if($scope.memberID.length == 4) {
             var code = parseInt($scope.memberID);
-            console.log('this should be an int: ', code);
+            //console.log('this should be an int: ', code);
+
+
 
             $http({
                 method: 'JSONP',
@@ -129,11 +143,15 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
 
 
 
-        }
-        else {
-            alert("invalid code");
-            $scope.memberID = '';
-        }
+            }
+            else {
+                alert("invalid code");
+                $scope.memberID = '';
+                $scope.passwordOne = false;
+                $scope.passwordTwo = false;
+                $scope.passwordThree = false;
+                $scope.passwordFour = false;
+            }
     }
 
 
