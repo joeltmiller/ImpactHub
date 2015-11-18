@@ -34,109 +34,141 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
         url: '/currentMonth'
     }).then(function(response){
         for (var i=0; i <response.data.length; i++) {
-            if (response.data[i].temp_member == 0) {
+            if (response.data[i].member == 'No, I\'m a Guest') {
                 $scope.curMonthGue.push(response.data[i]);
             } else
             $scope.curMonthMem.push(response.data[i]);
         }
         $scope.curMonthTot = $scope.curMonthMem.concat($scope.curMonthGue);
+
+        $http({
+            method:'GET',
+            url: '/priorMonth'
+        }).then(function(response){
+            for (var i=0; i <response.data.length; i++) {
+                if (response.data[i].member == 'No, I\'m a Guest') {
+                    $scope.prMonthGue.push(response.data[i]);
+                } else
+                    $scope.prMonthMem.push(response.data[i]);
+            }
+            $scope.prMonthTot = $scope.prMonthMem.concat($scope.prMonthGue);
+
+            $http({
+                method:'GET',
+                url: '/priorTwoMonth'
+            }).then(function(response){
+                for (var i=0; i <response.data.length; i++) {
+                    if (response.data[i].member == 'No, I\'m a Guest') {
+                        $scope.twoMonGue.push(response.data[i]);
+                    } else
+                        $scope.twoMonMem.push(response.data[i]);
+                }
+                $scope.twoMonthTot = $scope.twoMonMem.concat($scope.twoMonGue);
+
+                $http({
+                    method:'GET',
+                    url: '/priorThreeMonth'
+                }).then(function(response){
+                    for (var i=0; i <response.data.length; i++) {
+                        if (response.data[i].member == 'No, I\'m a Guest') {
+                            $scope.threeMonGue.push(response.data[i]);
+                        } else
+                            $scope.threeMonMem.push(response.data[i]);
+                    }
+                    $scope.threeMonTot = $scope.threeMonMem.concat($scope.threeMonGue);
+
+                    $http({
+                        method:'GET',
+                        url: '/priorFourMonth'
+                    }).then(function(response){
+                        for (var i=0; i <response.data.length; i++) {
+                            if (response.data[i].member == 'No, I\'m a Guest') {
+                                $scope.fourMonGue.push(response.data[i]);
+                            } else
+                                $scope.fourMonMem.push(response.data[i]);
+                        }
+                        $scope.fourMonTot = $scope.fourMonMem.concat($scope.fourMonGue);
+
+                        $http({
+                            method:'GET',
+                            url: '/priorFiveMonth'
+                        }).then(function(response){
+                            for (var i=0; i <response.data.length; i++) {
+                                if (response.data[i].member == 'No, I\'m a Guest') {
+                                    $scope.fiveMonGue.push(response.data[i]);
+                                } else
+                                    $scope.fiveMonMem.push(response.data[i]);
+                            }
+                            $scope.fiveMonTot = $scope.fiveMonMem.concat($scope.fiveMonGue);
+
+                            console.log($scope.fiveMonMem.length);
+                            console.log($scope.fiveMonGue.length);
+                            console.log($scope.fiveMonTot.length);
+                            $scope.priorData = {
+                                labels: ['June', 'July', 'August', 'September', 'October', 'November'],
+                                datasets: [
+                                    {
+                                        label: 'Guest',
+                                        fillColor: 'rgba(220,220,220,0.5)',
+                                        strokeColor: 'rgba(220,220,220,0.8)',
+                                        highlightFill: 'rgba(220,220,220,0.75)',
+                                        highlightStroke: 'rgba(220,220,220,1)',
+                                        data: [$scope.fiveMonGue.length, $scope.fourMonGue.length, $scope.threeMonGue.length, $scope.twoMonGue.length, $scope.prMonthGue.length, $scope.curMonthGue.length]
+                                    },
+                                    {
+                                        label: 'Member',
+                                        fillColor: 'rgba(129,41,38,0.5)',
+                                        strokeColor: 'rgba(129,41,38,0.8)',
+                                        highlightFill: 'rgba(255,90,94,0.75)',
+                                        highlightStroke: 'rgba(255,90,94,1)',
+                                        data: [$scope.fiveMonMem.length, $scope.fourMonMem.length, $scope.threeMonMem.length, $scope.twoMonMem.length, $scope.prMonthMem.length, $scope.curMonthMem.length]
+                                    }
+                                ]
+                            };
+
+                            // Chart.js Options
+                            $scope.options2 =  {
+
+                                // Sets the chart to be responsive
+                                responsive: true,
+
+                                //Boolean - Whether the scale should start at zero, or an order of magnitude down from the lowest value
+                                scaleBeginAtZero : true,
+
+                                //Boolean - Whether grid lines are shown across the chart
+                                scaleShowGridLines : true,
+
+                                //String - Colour of the grid lines
+                                scaleGridLineColor : "rgba(0,0,0,.05)",
+
+                                //Number - Width of the grid lines
+                                scaleGridLineWidth : 1,
+
+                                //Boolean - If there is a stroke on each bar
+                                barShowStroke : true,
+
+                                //Number - Pixel width of the bar stroke
+                                barStrokeWidth : 2,
+
+                                //Number - Spacing between each of the X value sets
+                                barValueSpacing : 5,
+
+                                //Number - Spacing between data sets within X values
+                                barDatasetSpacing : 1,
+
+                                //String - A legend template
+                                legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+                            };
+
+                        });
+                    });
+                });
+            });
+        });
     });
 
-    $http({
-        method:'GET',
-        url: '/priorMonth'
-    }).then(function(response){
-        for (var i=0; i <response.data.length; i++) {
-            if (response.data[i].temp_member == 0) {
-                $scope.prMonthGue.push(response.data[i]);
-            } else
-                $scope.prMonthMem.push(response.data[i]);
-        }
-        $scope.prMonthTot = $scope.prMonthMem.concat($scope.prMonthGue);
-    });
-
-    $http({
-        method:'GET',
-        url: '/priorTwoMonth'
-    }).then(function(response){
-        for (var i=0; i <response.data.length; i++) {
-            if (response.data[i].temp_member == 0) {
-                $scope.twoMonGue.push(response.data[i]);
-            } else
-                $scope.twoMonMem.push(response.data[i]);
-        }
-        $scope.twoMonthTot = $scope.twoMonMem.concat($scope.twoMonGue);
-    });
-
-    $http({
-        method:'GET',
-        url: '/priorThreeMonth'
-    }).then(function(response){
-        for (var i=0; i <response.data.length; i++) {
-            if (response.data[i].temp_member == 0) {
-                $scope.threeMonGue.push(response.data[i]);
-            } else
-                $scope.threeMonMem.push(response.data[i]);
-        }
-        $scope.threeMonTot = $scope.threeMonMem.concat($scope.threeMonGue);
-    });
-
-    $http({
-        method:'GET',
-        url: '/priorFourMonth'
-    }).then(function(response){
-        for (var i=0; i <response.data.length; i++) {
-            if (response.data[i].temp_member == 0) {
-                $scope.fourMonGue.push(response.data[i]);
-            } else
-                $scope.fourMonMem.push(response.data[i]);
-        }
-        $scope.fourMonTot = $scope.fourMonMem.concat($scope.fourMonGue);
-    });
-
-    $http({
-        method:'GET',
-        url: '/priorFiveMonth'
-    }).then(function(response){
-        for (var i=0; i <response.data.length; i++) {
-            if (response.data[i].temp_member == 0) {
-                $scope.fiveMonGue.push(response.data[i]);
-            } else
-                $scope.fiveMonMem.push(response.data[i]);
-        }
-        $scope.fiveMonTot = $scope.fiveMonMem.concat($scope.fiveMonGue);
-    });
-
-
-
-        //$http({
-        //    method:'JSONP',
-        //    url:"https://api.thedatabank.com/v1.0/login.asp?username=*****&password=*****"
-        //}).then(function(response) {
-        //    console.log("Auth url and response.data", response.data);
-        //}, function errorCallBack(response){
-        //
-        //    console.log("Login error", response);
-        //});
-        //
-        //$http({
-        //    method: 'JSONP',
-        //    url:"https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?lastname=bailey&callback=JSON_CALLBACK"
-        //}).then(function(response){
-        //    console.log("Query from dashboard", response.data);
-        //
-        //}, function errorCallBack(response){
-        //
-        //    console.log("Search Member dashboard", response);
-        //
-        //});
 
     $scope.message = "Dashboard Controller is Working";
-
-
-
-
-
 
 
     $scope.guestWeek = [];
@@ -145,7 +177,7 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
     $http.get('/perWeek').then(function(res) {
 
         for (var i= 0; i <res.data.length; i++){
-            if (res.data[i].temp_member == 0) {
+            if (res.data[i].member == 'No, I\'m a Guest') {
                 $scope.guestWeek.push(res.data[i]);
             } else
                 $scope.memberWeek.push(res.data[i]);
@@ -280,6 +312,5 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
 
         //String - A legend template
         legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    }
-
+    };
 }]);

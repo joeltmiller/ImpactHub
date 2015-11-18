@@ -1,7 +1,21 @@
 var app = angular.module('email', ['ngSanitize', 'ngCsv']);
 
-app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
+app.controller('EmailController', ['$scope', '$http', '$window', function($scope, $http, $window) {
     $scope.message = "Email Controller is working!";
+
+    $scope.navClass = 'big';
+    angular.element($window).bind(
+        "scroll", function() {
+            //console.log(window.pageYOffset);
+            if(window.pageYOffset > 0) {
+                $scope.navClass = 'small';
+            } else {
+                $scope.navClass = 'big';
+            }
+            $scope.$apply();
+        });
+
+
 
     $scope.emails = [];
 
@@ -65,6 +79,9 @@ app.controller('EmailController', ['$scope', '$http', function($scope, $http) {
             $http.get('/data').then(function(res){
 
                 $scope.calledData = res.data;
+
+                console.log("Called Object name", $scope.calledData[i].name);
+
 
                 console.log("pulled data", res.data);
 
