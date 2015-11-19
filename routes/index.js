@@ -64,6 +64,21 @@ router.post('/guest', function (req, res) {
 
 });
 
+router.post('/member', function(req,res){
+    var datetime = moment().format('YYYY-MM-DD HH:mm:ss');
+    var name = req.body.name;
+    var member = "Yes, I'm a Member";
+    var email = req.body.email;
+    var company = req.body.company;
+
+    var post = {temp_time: datetime, name: name, member: member, email: email, company: company};
+
+    connection.query('INSERT INTO responses SET ?', post, function (err) {
+        if (err) throw err;
+        res.sendStatus(200);
+    });
+});
+
 router.get('/data', function (req, res, next) {
     connection.query('SELECT * FROM responses', function (err, rows) {
         if (err) throw err;
@@ -93,7 +108,7 @@ router.get('/guestsPerDay', function(req, res) {
 });
 
 router.get('/membersPerDay', function(req, res) {
-    connection.query("SELECT * FROM responses WHERE temp_time > CURDATE() AND member LIKE '%Yes%';", function (err, rows) {
+    connection.query("SELECT * FROM responses WHERE temp_time > CURDATE() AND member LIKE '%Yes%'", function (err, rows) {
         if (err) throw err;
         res.json(rows);
     });

@@ -129,6 +129,9 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
                 $scope.checkMemberStatus();
 
 
+
+
+
             }, function errorCallBack(response){
 
                 console.log("Search Member dashboard", response);
@@ -153,7 +156,16 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
     $scope.checkMemberStatus = function(){
         if($scope.memberVerify.Result == "Success"){
             console.log("Hello, ", $scope.memberVerify.Members[0].FullName1);
-            $scope.memberSuccess = $scope.memberVerify.Members[0].FullName1;
+            $scope.memberSuccess = {
+                name: $scope.memberVerify.Members[0].FullName1,
+                email: $scope.memberVerify.Members[0].Email,
+                company: $scope.memberVerify.Members[0].Company
+            };
+
+            console.log($scope.memberSuccess);
+
+            $http.post('/member', $scope.memberSuccess);
+
             $location.path("/thanks");
         }else{
             alert("member not found");
