@@ -33,6 +33,10 @@ module.exports = function(app, passport) {
         res.sendFile(path.join(__dirname, "../public/views/dashboard.html"));
     });
 
+    app.get('/admin', isLoggedIn, function(req, res) {
+        res.sendFile(path.join(__dirname, "../public/views/admin.html"));
+    });
+
     app.get('/email', isLoggedIn, function(req, res) {
         res.sendFile(path.join(__dirname, "../public/views/email.html"));
     });
