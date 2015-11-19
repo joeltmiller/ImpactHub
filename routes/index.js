@@ -87,7 +87,7 @@ router.get('/data', function (req, res, next) {
 });
 
 router.get('/guestEmails', function (req, res, next) {
-    connection.query("SELECT * FROM responses WHERE member like '%No%'  AND email IS NOT NULL ORDER BY temp_time DESC", function (err, rows) {
+    connection.query("SELECT * FROM responses WHERE member like '%No%' AND email IS NOT NULL ORDER BY temp_time DESC", function (err, rows) {
         if (err) throw err;
         res.json(rows);
     });
@@ -185,12 +185,26 @@ router.get('/memberverify', function(req, res){
     request(memberIDverify, function(err, response, body){
         res.json(body);
     })
-
-
-
 });
 
-//thedatabank.com API setup below
+//future route for grabbing specific data from thedatabank
+
+//router.get('/memberRevenue', function(req, res){
+//
+//    var memberRev = {
+//        url: serverURL + 'getmembercontributions.asp?rows=1500',
+//        headers: {
+//            Cookie: cookie1 + newCookieHeader
+//        }
+//    };
+//
+//    request(memberRev, function(err, response, body){
+//        //console.log("Request mod body", body);
+//        res.json(body);
+//    })
+//});
+
+//thedatabank.com API login below
 
 var serverURL = '';
 var cookie1 = '';
@@ -198,7 +212,6 @@ var newCookieHeader = '';
 request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username: process.env.username, password: process.env.password }},
     function(err, response, body) {
         cookie1= (response.headers['set-cookie'][0]);
-        cookie2= (response.headers['set-cookie'][1]);
         //console.log("This is var cookie1: ", cookie1);
         var options = {
             url: 'https://api.thedatabank.com/v1.0/secure/init.asp',
@@ -211,32 +224,8 @@ request.post({url:'https://api.thedatabank.com/v1.0/login.asp?', form: {username
             var data = JSON.parse(body);
             newCookieHeader = response.headers['set-cookie'][0];
             serverURL = data.ServerURL;
-            var options2 = {
-                url: serverURL + 'SearchMembers.asp?lastname=bailey',
-                headers: {
-                    Cookie: cookie1 + newCookieHeader
-                }
-
-            };
-            //console.log(sessionId);
-            request(options2, function (err, response, body) {
-                //console.log(body);
-
-                var newCallOptions = {
-                    url: 'https://api.thedatabank.com/v1.0/secure/SearchMembers.asp?MemberID=7170',
-                    headers: {
-                        Cookie: cookie1 + newCookieHeader
-                    }
-                };
-
-                request(newCallOptions, function (err, response, body) {
-                    console.log('Second call to server', body);
-                })
-            })
         }
-
         request(options, callback);
-
     });
 
 module.exports = router;

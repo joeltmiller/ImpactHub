@@ -3,10 +3,6 @@ var app = angular.module('dashboard', ['tc.chartjs', 'vAccordion']);
 app.controller('DashboardController', ['$scope', '$http', function($scope, $http) {
 
 
-    //var d= new Date();
-    //var curMonth = d.getMonth()+1;
-    //console.log(curMonth);
-
     //These GET calls could be made to be more efficient.  Current solution based on achieving a MVP.
 
     $scope.curMonthMem = [];
@@ -349,4 +345,49 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
         //String - A legend template
         legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
     };
+
+    //beginning of a possible way to access member data through thedatabank.
+
+    //$scope.membA = [];
+    //$scope.membB = [];
+    //$scope.membC = [];
+    //$scope.membD = [];
+    //$scope.membE = [];
+    //$scope.membF = [];
+    //$scope.membG = [];
+    //$scope.membH = [];
+    //
+    //
+    //$http({
+    //    method:'GET',
+    //    url:'/memberRevenue'
+    //}).then(function(response){
+    //    var datatest = JSON.parse(response.data);
+    //    for (var i=0; i < datatest.Contributions.length; i++) {
+    //        if (datatest.Contributions[i].Segment == 'membA' || datatest.Contributions[i].Segment =='MEMBA') {
+    //            $scope.membA.push(datatest.Contributions[i]);
+    //        } else if (datatest.Contributions[i].Segment == 'membB' || datatest.Contributions[i].Segment =='MEMBB') {
+    //            $scope.membB.push(datatest.Contributions[i]);
+    //        } else if (datatest.Contributions[i].Segment == 'membC' || datatest.Contributions[i].Segment =='MEMBC') {
+    //            $scope.membC.push(datatest.Contributions[i]);
+    //        } else if (datatest.Contributions[i].Segment == 'membD' || datatest.Contributions[i].Segment =='MEMBD') {
+    //            $scope.membD.push(datatest.Contributions[i]);
+    //        } else if (datatest.Contributions[i].Segment == 'membE' || datatest.Contributions[i].Segment =='MEMBE') {
+    //            $scope.membE.push(datatest.Contributions[i]);
+    //        } else if (datatest.Contributions[i].Segment == 'membF' || datatest.Contributions[i].Segment =='MEMBF') {
+    //            $scope.membF.push(datatest.Contributions[i]);
+    //        } else if (datatest.Contributions[i].Segment == 'membG' || datatest.Contributions[i].Segment =='MEMBG') {
+    //            $scope.membG.push(datatest.Contributions[i]);
+    //        } else if (datatest.Contributions[i].Segment == 'membH' || datatest.Contributions[i].Segment =='MEMBH') {
+    //            $scope.membH.push(datatest.Contributions[i]);
+    //        }
+    //    }
+    //    $scope.membATot = function(){
+    //        var total = parseFloat(0);
+    //        for (var i=0; i < $scope.membA.length; i++) {
+    //            total += $scope.membA[i].Contribution_Amount;
+    //        } return total;
+    //    };
+    //    console.log($scope.membATot());
+    //});
 }]);
