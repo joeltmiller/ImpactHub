@@ -613,3 +613,13 @@ p.person{
   padding: 1.5em;
 }
 
+/*Firefox Hack for Member Login Page */
+@-moz-document url-prefix() {
+  .firefoxFix {
+    margin: 0 -15px 0 0;
+  }
+
+  #PINform{
+    margin: 0 -10px 0 20px;
+  }
+}
