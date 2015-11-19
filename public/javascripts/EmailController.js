@@ -35,12 +35,43 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
         {
             val: 'sixMonths',
             txt: '6 months'
+        }
+    ];
+
+    $scope.memberOptions = [
+        {
+            val: 'members',
+            txt: 'Members'
         },
         {
-            val: 'all',
-            txt: 'All'
+            val: 'guests',
+            txt: 'Guests'
         }
-    ]
+    ];
+
+    $scope.emailOptions = [
+        {
+            val: 'yes',
+            txt: 'Yes'
+        },
+        {
+            val: 'no',
+            txt: 'No'
+        }
+    ];
+
+    $scope.membershipInterOptions = [
+        {
+            val: 'yes',
+            txt: 'Yes'
+        },
+        {
+            val: 'no',
+            txt: 'No'
+        }
+    ];
+
+
 
     //Sorting function and variables to sort the guest email list
     $scope.predicate = '';
@@ -69,23 +100,19 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
 
     var i = 0;
 
-
-
-
-
-
-        $scope.getDateObj = function() {
+        $scope.getMemberObj = function() {
 
             $http.get('/data').then(function(res){
 
                 $scope.calledData = res.data;
 
-                //console.log("Called Object name", $scope.calledData[i].name);
-
-
-                console.log("pulled data", res.data);
-
                 $scope.data = [];
+
+                $scope.dataPt2 = [];
+
+                $scope.dataPt3 = [];
+
+                $scope.dataPt4 = [];
 
 
                 var pushToObj = function(data){
@@ -94,6 +121,11 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                     getIntMember(data.membership);
                     return $scope.dataObj;
                 };
+
+                var futurePush = function(data){
+                    $scope.dataObj.push(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
+                    return $scope.dataObj;
+                }
 
                 var getEmailList = function(emailMe){
                     if(emailMe == 0){
@@ -111,72 +143,142 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                     }
                 };
 
-                for(var i = 0; i < $scope.calledData.length; i++){
+                $scope.getDateObj = function() {
+                    for(var i = 0; i < $scope.calledData.length; i++){
 
-                    $scope.dataObj = [];
+                        $scope.dataObj = [];
 
-                    var getDateRange = function(date) {
+                        var getDateRange = function(date) {
 
-                        //function todayDate() {
-                        //    now = new Date();
-                        //    year = "" + now.getFullYear();
-                        //    month = "" + (now.getMonth() + 1); if (month.length == 1) { month = "0" + month; }
-                        //    day = "" + now.getDate(); if (day.length == 1) { day = "0" + day; }
-                        //    hour = "" + now.getHours(); if (hour.length == 1) { hour = "0" + hour; }
-                        //    minute = "" + now.getMinutes(); if (minute.length == 1) { minute = "0" + minute; }
-                        //    second = "" + now.getSeconds(); if (second.length == 1) { second = "0" + second; }
-                        //    return year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
-                        //}
+                            var weekAgo = (Date.today().setTimeToNow().add({days:-8})).toString('yyyy-MM-ddTHH:mm:ssZ');
 
+                            var monthAgo = (Date.today().setTimeToNow().add({months:-1})).toString('yyyy-MM-ddTHH:mm:ssZ');
 
-                        console.log("orginal date", Date.today().setTimeToNow().toString('yyyy-MM-ddTHH:mm:ssZ'));
+                            var sixMonthsAgo = (Date.today().setTimeToNow().add({months:-6})).toString('yyyy-MM-ddTHH:mm:ssZ');
 
-                        var weekAgo = (Date.today().setTimeToNow().add({days:-7})).toString('yyyy-MM-ddTHH:mm:ssZ');
-
-                        console.log("week agos date", weekAgo);
-
-                        if($scope.timeselect == "week"){
-                            console.log("ran week");
-                            if(date > weekAgo){
-                                console.log("running week if statement", date);
+                            if($scope.timeselect == "week"){
+                                if(date > weekAgo){
+                                    pushToObj($scope.calledData[i]);
+                                }
+                            } else if ($scope.timeselect == "month"){
+                                if(date > monthAgo){
+                                    pushToObj($scope.calledData[i]);
+                                }
+                            } else if ($scope.timeselect == "sixMonths"){
+                                if(date > sixMonthsAgo){
+                                    pushToObj($scope.calledData[i]);
+                                }
+                            } else {
                                 pushToObj($scope.calledData[i]);
                             }
-                        } else if ($scope.timeselect == "month"){
-                            if(date == Date.today().add({days:-30})){
-                                console.log("running month if statement");
-                                pushToObj($scope.calledData[i]);
-                            }
-                        } else if ($scope.timeselect == "sixMonths"){
-                            if(date == Date.today().add({days:-180})){
-                                console.log("running 6 month if statement");
-                                pushToObj($scope.calledData[i]);
-                            }
-                        } else {
-                            pushToObj($scope.calledData[i]);
-                            console.log("pushing all")
+                            return $scope.dataObj;
+                        };
+
+                        getDateRange($scope.calledData[i].temp_time);
+
+
+
+                        if($scope.dataObj.length != 0){
+                            console.log("pushed dated object", $scope.dataObj);
+                            $scope.data.push($scope.dataObj);
                         }
-                        console.log("pushed object", $scope.dataObj);
-                        return $scope.dataObj;
-                    };
-
-                    getDateRange($scope.calledData[i].temp_time);
-                    //dataObj.push($scope.calledData[i].temp_time, $scope.calledData[i].name, $scope.calledData[i].member, $scope.calledData[i].meeting_with, $scope.calledData[i].email, $scope.calledData[i].twitter);
-                    //if($scope.calledData[i].email_me == 0){
-                    //    dataObj.push("No");
-                    //} else {
-                    //    dataObj.push("Yes");
-                    //}
-                    //if($scope.calledData[i].membership == 0){
-                    //    dataObj.push("No");
-                    //} else {
-                    //    dataObj.push("Yes");
-                    //}
-                    if($scope.dataObj.length != 0){
-                        console.log('running this push');
-                        $scope.data.push($scope.dataObj);
                     }
-                }
-                return $scope.data;
+                    return $scope.data;
+                };
+
+                $scope.getMemberObj = function() {
+                    for(var j = 0; j < $scope.data.length; j++){
+                        $scope.dataObj = [];
+
+                        $scope.getMemberType = function() {
+                            if($scope.typeselect == "members"){
+                                console.log("$scope.data[j][2]", $scope.data[j][2])
+                                if($scope.data[j][2] == "Yes, I'm a Member"){
+                                    futurePush($scope.data[j]);
+                                }
+                            } else if ($scope.typeselect == "guests"){
+                                if($scope.data[j][2] == "No, I'm a Guest"){
+                                    futurePush($scope.data[j]);
+                                }
+                            } else {
+                                futurePush($scope.data[j]);
+                            }
+                        };
+
+                        $scope.getMemberType();
+
+                        if($scope.dataObj.length != 0){
+                            console.log("pushed member object", $scope.dataObj);
+                            $scope.dataPt2.push($scope.dataObj);
+                        }
+                    }
+                    return $scope.dataPt2;
+                };
+
+                $scope.getEmailObj = function(){
+                    for(var k = 0; k < $scope.dataPt2.length; k++){
+                        $scope.dataObj = [];
+
+                        $scope.getEmailType = function() {
+                            if($scope.emailselect == "yes"){
+                                if($scope.dataPt2[k][6] == "Yes"){
+                                    futurePush($scope.dataPt2[k]);
+                                }
+                            } else if ($scope.emailselect == "no"){
+                                if($scope.dataPt2[k][6] == "No,"){
+                                    futurePush($scope.dataPt2[k]);
+                                }
+                            } else {
+                                futurePush($scope.dataPt2[k]);
+                            }
+                        };
+
+                        $scope.getEmailType();
+
+                        if($scope.dataObj.length != 0){
+                            console.log("pushed email object", $scope.dataObj);
+                            $scope.dataPt3.push($scope.dataObj);
+                        }
+                    }
+                    return $scope.dataPt3;
+                };
+
+                $scope.getMembershipObj = function(){
+                    for(var l = 0; l < $scope.dataPt3.length; l++){
+                        $scope.dataObj = [];
+
+                        $scope.getEmailType = function() {
+                            if($scope.memberselect == "yes"){
+                                if($scope.dataPt3[l][7] == "Yes"){
+                                    futurePush($scope.dataPt3[l]);
+                                }
+                            } else if ($scope.memberselect == "no"){
+                                if($scope.dataPt3[l][7] == "No"){
+                                    futurePush($scope.dataPt3[l]);
+                                }
+                            } else {
+                                futurePush($scope.dataPt3[l]);
+                            }
+                        };
+
+                        $scope.getEmailType();
+
+                        if($scope.dataObj.length != 0){
+                            console.log("pushed membership object", $scope.dataObj);
+                            $scope.dataPt4.push($scope.dataObj);
+                        }
+                    }
+                    return $scope.dataPt4;
+                };
+
+                $scope.getDateObj();
+                console.log("data object", $scope.data);
+                $scope.getMemberObj();
+                console.log("dataPt2 object", $scope.dataPt2);
+                $scope.getEmailObj();
+                console.log("dataPt3 object", $scope.dataPt3);
+                $scope.getMembershipObj();
+                console.log("dataPt4 object", $scope.dataPt4);
 
             });
 

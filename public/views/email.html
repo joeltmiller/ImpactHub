@@ -44,27 +44,32 @@
 
                         <fieldset>
                             <label for="time">Time Period</label>
-                            <select ng-options="obj.val as obj.txt for obj in dateOptions"
-                                    ng-change="getDateObj()"
-                                    ng-model="timeselect" id="time">
+                                <select ng-options="obj.val as obj.txt for obj in dateOptions"
+                                        ng-model="timeselect"
+                                        id="time">
+                                </select>
 
-                            </select>
 
-                                <label for="email">Email</label>
-                                    <select id="email">
-                                        <option>Yes</option>
-                                        <option>No</option>
-                                        <option>Open</option>
-                                    </select>
-                                <label for="member">Interested in Membership</label>
-                                    <select id="member">
-                                        <option>Yes</option>
-                                        <option>No</option>
-                                        <option>Open</option>
-                                    </select>
+                            <label for="member">Type</label>
+                                <select ng-options="obj.val as obj.txt for obj in memberOptions"
+                                        ng-model="typeselect"
+                                        id="member">
+                                </select>
 
-                                <button type="submit" class="pure-button">Generate</button>
-                                <button class="pure-button" ng-click="clickFn()" type="button" ng-csv="getSignIn()" csv-header="getHeader()" filename="email.csv">Export List</button>
+                            <label for="email">Add to Email List</label>
+                                <select ng-options="obj.val as obj.txt for obj in emailOptions"
+                                        ng-model="emailselect"
+                                        id="email">
+                                </select>
+
+                            <label for="membership">Interested in Membership</label>
+                                <select ng-options="obj.val as obj.txt for obj in membershipInterOptions"
+                                        ng-model="memberselect"
+                                        id="membership">
+                                </select>
+
+                            <button type="submit" class="pure-button" ng-click="getMemberObj()">Generate</button>
+                            <button class="pure-button" ng-click="clickFn()" type="button" ng-csv="getSignIn()" csv-header="getHeader()" filename="email.csv">Export List</button>
 
                         </fieldset>
 
@@ -125,7 +130,7 @@
 
                     </div>
 
-                <div ng-repeat="guest in data track by $index | orderBy:predicate:reverse" class="list-item pure-u-1">
+                <div ng-repeat="guest in dataPt4 track by $index | orderBy:predicate:reverse" class="list-item pure-u-1">
                     <ul class="categories">
                         <li ng-class-odd="'odd'" ng-class-even="'even'" class = "time pure-u-2-24">
                             <div class="box-border-right">
