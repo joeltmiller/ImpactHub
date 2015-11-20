@@ -1,4 +1,4 @@
-app.controller('SigninController', ['$scope', '$http', '$location', function($scope, $http, $location) {
+app.controller('SigninController', ['$scope', '$http', '$location', '$window', function($scope, $http, $location, $window) {
 
     $scope.message = "Sign-in Controller is Working";
     $scope.memberID = '';
@@ -94,7 +94,7 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
 
 
         if($scope.memberID === '7170'){
-            $location.path("/admin");
+            $window.location.href = '/admin';
 
         }else if($scope.memberID.length == 4) {
             var code = {'member':parseInt($scope.memberID)};

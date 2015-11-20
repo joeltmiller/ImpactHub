@@ -23,6 +23,10 @@ router.get('/', function (req, res, next) {
     res.sendFile(path.join(__dirname, '../public/views/index.html'));
 });
 
+router.get('/admin', function(req, res){
+    res.render('admin.ejs', { message: req.flash('loginMessage') });
+});
+
 
 //Form Post
 router.post('/guest', function (req, res) {

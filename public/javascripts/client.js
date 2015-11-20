@@ -14,10 +14,6 @@ app.config(function($routeProvider, $locationProvider){
             templateUrl: 'views/guestinfo.html',
             controller: 'GuestFormController'
         })
-        .when('/admin', {
-            templateUrl: 'views/admin.html',
-            controller: 'AdminController'
-        })
         .when('/thanks', {
             templateUrl: 'views/thanks.html',
             controller: 'ThankYouController'

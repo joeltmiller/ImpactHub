@@ -1,6 +1,7 @@
 /**
  * Created by davidhoverson on 11/6/15.
  */
+var flash = require('connect-flash');
 var LocalStrategy = require('passport-local').Strategy;
 var mysql = require('mysql');
 var bcrypt = require('bcrypt-nodejs');
@@ -34,7 +35,7 @@ module.exports=function(passport) {
                     if (err)
                         return done(err);
                     if (rows.length) {
-                        return done(null, false);
+                        return done(null, false, req.flash('signupMessage', 'That Username is already taken.'));
                     } else {
                         // if there is no user with that username
                         // create the user
@@ -67,12 +68,12 @@ module.exports=function(passport) {
                     if (err)
                         console.log("error");
                     if (!rows.length) {
-                        return done(null, false);
+                        return done(null, false, req.flash('loginMessage', 'Incorrect username or password.'));
                     }
 
                     // if the user is found but the password is wrong
                     if (!bcrypt.compareSync(password, rows[0].password))
-                        return done(null, false);
+                        return done(null, false, req.flash('loginMessage', 'Incorrect username or password.'));
 
                     // all is well, return successful user
                     return done(null, rows[0]);
