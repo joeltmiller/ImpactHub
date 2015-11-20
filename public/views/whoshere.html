@@ -6,13 +6,13 @@
             <div class="pure-u-1-4">
                 <a href="/signin"><h1 class="header">Go here to Sign in!</h1></a>
             </div>
-            <div class="pure-u-5-12 peopleDiv">
+            <div class="pure-u-5-12 peopleDiv main-login-content">
                 <h2>Members</h2>
                 <hr />
                 <p class="person" ng-repeat="person in getMember | orderBy: 'created_at':true">{{person.name}}</p>
             </div>
             <div class="pure-u-2-12 spaceDiv"></div>
-            <div class="pure-u-5-12 peopleDiv">
+            <div class="pure-u-5-12 peopleDiv main-login-content">
                 <h2>Guests</h2>
                 <hr />
                 <p class="person" ng-repeat="person in getGuest | orderBy: 'created_at':true">{{person.name}}</p>

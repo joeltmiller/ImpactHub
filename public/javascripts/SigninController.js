@@ -149,7 +149,7 @@ app.controller('SigninController', ['$scope', '$http', '$location', function($sc
 
             $http.post('/member', $scope.memberSuccess);
 
-            $location.path("/thanks");
+            $location.path("/whoshere");
         }else{
             alert("member not found");
             $scope.memberID = '';

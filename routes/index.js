@@ -57,7 +57,7 @@ router.post('/guest', function (req, res) {
     connection.query('INSERT INTO responses SET ?', post, function (err) {
         if (err) throw err;
 
-        res.json({route: '/thanks'}); //this is sent to client.js
+        res.json({route: '/whoshere'}); //this is sent to client.js
 
 
     });
