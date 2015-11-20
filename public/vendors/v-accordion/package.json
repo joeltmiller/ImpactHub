@@ -57,7 +57,7 @@
   "_id": "v-accordion@1.4.1",
   "scripts": {},
   "_shasum": "44cb6bbbc9c0486b6433f5c421fa481447ee11c2",
-  "_from": "v-accordion@*",
+  "_from": "v-accordion@>=1.4.1 <2.0.0",
   "_npmVersion": "2.14.3",
   "_nodeVersion": "0.12.7",
   "_npmUser": {
