@@ -184,7 +184,7 @@ a{
   }
 
   .loginWrapper a{
-    font-size: 16px;
+    font-size: 12px;
   }
 }
 
@@ -211,7 +211,7 @@ a{
 
 }
 
-@media screen and (min-width: 900px) {
+@media screen and (min-width: 850px) {
   .backBanner {
     width: 4.1%;
     position: absolute;
@@ -227,6 +227,11 @@ a{
     top: 16px;
     z-index: -50;
   }
+
+  .loginWrapper a{
+    font-size: 16px;
+  }
+
 }
 
 @media screen and (max-width: 330px) {
