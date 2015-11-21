@@ -623,3 +623,19 @@ p.person{
     margin: 0 -10px 0 20px;
   }
 }
+
+.btn {
+  -webkit-border-radius: 5;
+  -moz-border-radius: 5;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #000;
+  background: #999B9B;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: darkgray;
+  text-decoration: none;
+}
