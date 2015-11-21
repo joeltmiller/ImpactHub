@@ -8,6 +8,8 @@ app.controller('GuestFormController', ['$scope', '$http', '$location', function(
 
     $scope.checkboxMember = true;
 
+    $scope.checkboxEvent = false;
+
 
 
 
