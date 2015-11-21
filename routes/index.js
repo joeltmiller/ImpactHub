@@ -39,6 +39,7 @@ router.post('/guest', function (req, res) {
     var company = req.body.company;
     var membership = req.body.membership;
     var email_me = req.body.email_opt_in;
+    var event = req.body.event;
     var datetime = moment().format('YYYY-MM-DD HH:mm:ss');
 
     if(membership == true){
@@ -52,9 +53,14 @@ router.post('/guest', function (req, res) {
     }else{
         email_me = 0;
     }
+    if(event == true){
+        event = 1;
+    }else{
+        email_me = 0;
+    }
 
     var post = {name: name, email: email, meeting_with: meeting, member: member,
-    twitter: twitter, membership: membership, company: company, email_me: email_me, temp_time: datetime};
+    twitter: twitter, membership: membership, company: company, email_me: email_me, event: event, temp_time: datetime};
 
     console.log(post);
 

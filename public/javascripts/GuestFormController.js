@@ -21,20 +21,13 @@ app.controller('GuestFormController', ['$scope', '$http', '$location', function(
              twitter: $scope.twitter,
              company: $scope.company,
              membership: $scope.checkboxMember,
-             email_opt_in: $scope.checkboxEmail
-
-
+             email_opt_in: $scope.checkboxEmail,
+             event: $scope.checkboxEvent
          };
-        console.log($scope.postData);
 
         $http.post('/guest', $scope.postData).then(function(response){
-
-            console.log('Response', response.data);
-
             $location.path(response.data.route);
         });
-
-
 
     };
 
