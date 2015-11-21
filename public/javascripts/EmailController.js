@@ -15,7 +15,13 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
             $scope.$apply();
         });
 
+    $scope.data = [];
 
+    $scope.dataPt2 = [];
+
+    $scope.dataPt3 = [];
+
+    $scope.dataPt4 = [];
 
     $scope.emails = [];
 
@@ -35,6 +41,10 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
         {
             val: 'sixMonths',
             txt: '6 months'
+        },
+        {
+            val: 'all',
+            txt: 'All'
         }
     ];
 
@@ -46,6 +56,10 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
         {
             val: 'guests',
             txt: 'Guests'
+        },
+        {
+            val: 'all',
+            txt: 'All'
         }
     ];
 
@@ -57,6 +71,10 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
         {
             val: 'no',
             txt: 'No'
+        },
+        {
+            val: 'all',
+            txt: 'All'
         }
     ];
 
@@ -68,6 +86,10 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
         {
             val: 'no',
             txt: 'No'
+        },
+        {
+            val: 'all',
+            txt: 'All'
         }
     ];
 
@@ -100,20 +122,26 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
 
     var i = 0;
 
-        $scope.getMemberObj = function() {
+    var clearTable = function(){
+        $http.get('/data').then(function(res){
+            $scope.calledData = res.data;
+        });
+
+        $scope.data = [];
+
+        $scope.dataPt2 = [];
+
+        $scope.dataPt3 = [];
+
+        $scope.dataPt4 = [];
+    };
+
+        $scope.getFullObj = function() {
+            clearTable();
 
             $http.get('/data').then(function(res){
 
                 $scope.calledData = res.data;
-
-                $scope.data = [];
-
-                $scope.dataPt2 = [];
-
-                $scope.dataPt3 = [];
-
-                $scope.dataPt4 = [];
-
 
                 var pushToObj = function(data){
                     $scope.dataObj.push(data.temp_time, data.name, data.member, data.meeting_with, data.email, data.twitter);
@@ -306,7 +334,7 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
 
     $scope.getArray = function() {
 
-        return $scope.emails;
+        return $scope.dataPt4;
 
     };
 
