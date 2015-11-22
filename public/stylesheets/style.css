@@ -31,6 +31,10 @@ a{
   color: #ffffff;
 }
 
+label{
+  color: #FFFFFF;
+}
+
 .pure-g > div {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -263,6 +267,8 @@ a{
 
 .loginButton{
   background-color: #999b9b;
+  color: #FFFFFF;
+  /*font-weight: bold;*/
   height: 40%;
   /*width: 40%;*/
   margin: 3px;
@@ -287,7 +293,7 @@ a{
 
 .button-guestSubmit {
   background-color: #999b9b;
-  color: #000000;
+  color: #FFFFFF;
 }
 
 .bottomForm {
@@ -319,6 +325,7 @@ a{
 
 .keypadButton {
   background-color: #999b9b;
+  color: #FFFFFF;
   height: 55px;
   margin: 2px;
   cursor: pointer;
@@ -635,11 +642,11 @@ p.person{
 }
 
 .btn {
-  -webkit-border-radius: 5;
-  -moz-border-radius: 5;
-  border-radius: 5px;
-  font-family: Arial;
-  color: #000;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  /*font-family: Arial;*/
+  color: #FFFFFF;
   background: #999B9B;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
@@ -672,8 +679,17 @@ p.person{
 .dashboard-header {
   background-color: #FFFFFF;
   height: 50px;
+  border-right: 3px;
 }
 
 .graphlabel {
   color: white;
+}
+
+.email-content label {
+  margin: 0 5px 0 5px;
+}
+
+.top-form {
+  margin-bottom: 20px;
 }

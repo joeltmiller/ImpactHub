@@ -40,29 +40,29 @@
 
                 <div class="pure-u-1">
 
-                    <form class="pure-form">
+                    <form class="top-form pure-form">
 
                         <fieldset>
-                            <label for="time">Time Period</label>
+                            <label for="time">Time Period: </label>
                                 <select ng-options="obj.val as obj.txt for obj in dateOptions"
                                         ng-model="timeselect"
                                         id="time">
                                 </select>
 
 
-                            <label for="member">Type</label>
+                            <label for="member">Type: </label>
                                 <select ng-options="obj.val as obj.txt for obj in memberOptions"
                                         ng-model="typeselect"
                                         id="member">
                                 </select>
 
-                            <label for="email">Add to Email List</label>
+                            <label for="email">Add to Email List: </label>
                                 <select ng-options="obj.val as obj.txt for obj in emailOptions"
                                         ng-model="emailselect"
                                         id="email">
                                 </select>
 
-                            <label for="membership">Interested in Membership</label>
+                            <label for="membership">Interested in Membership: </label>
                                 <select ng-options="obj.val as obj.txt for obj in membershipInterOptions"
                                         ng-model="memberselect"
                                         id="membership">
