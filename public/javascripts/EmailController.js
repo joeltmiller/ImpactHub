@@ -300,6 +300,8 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                     }
                     if($scope.dataPt4 == 0){
                         $scope.isEmpty = true;
+                    } else {
+                        $scope.isEmpty = false;
                     }
                     return $scope.dataPt4;
                 };
