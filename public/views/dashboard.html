@@ -21,6 +21,7 @@
     <script src="javascripts/DashboardController.js"></script>
     <script src="vendors/sweetalert/dist/sweetalert.min.js"></script>
 </head>
+<body>
 
         <div ng-controller="DashboardController">
 
@@ -89,17 +90,17 @@
                                     <h2>
                                         Totals by Event
                                     </h2>
-                                    <div class="pure-u-1">
-
                                         <form class="pure-form" ng-submit="eventForm(date)">
-                                            <date-picker ng-model="date" format-date="formatDate"></date-picker>
-                                            <input class="pure-input" type="text" ng-model="date">
-                                            <input class="pure-button" type="submit" id="submit" value="Submit" />
-                                        </form>
-                                        <div ng-repeat="person in resData">
-                                            <h3>Total event guests: {{resData.length}}</h3>
-                                        </div>
+                                    <div class="calendar">
+                                        <date-picker ng-model="date" format-date="formatDate"></date-picker>
                                     </div>
+                                            <input class="pure-input" type="text" ng-model="date" />
+                                            <input class="pure-button" type="submit" id="submit" value="Submit" />
+
+                                        </form>
+                                <div class="event-response" ng-repeat="person in resData">
+                                    <h3>Total event guests: {{resData.length}}</h3>
+                                </div>
                             </div>
 
             </div>
