@@ -26,7 +26,8 @@ module.exports = function(grunt) {
 					"angular-animate/angular-animate.min.js.map",
 					"sweetalert/dist/sweetalert.min.js",
 					"sweetalert/dist/sweetalert.css",
-					"v-accordion/**"
+					"v-accordion/**",
+					"angular-date-picker/**"
 				],
 				"dest": "public/vendors/"
 			}
