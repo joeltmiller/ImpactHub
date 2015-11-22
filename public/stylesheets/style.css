@@ -103,7 +103,7 @@ label{
   /*position: absolute;*/
   float: left;
   background-color: #FFFFFF;
-  padding: 1% 100vw 0 0;
+  padding: 0 100vw 0 0;
 
   -webkit-transition:0.2s linear all;
   -moz-transition:0.2s linear all;
@@ -701,4 +701,17 @@ p.person{
 
 .top-form {
   margin-bottom: 20px;
+}
+
+.event-response {
+  color: #FFFFFF;
+}
+
+.calendar {
+  float: left;
+}
+
+.header-buttons {
+  float: right;
+  margin-top: -40px;
 }

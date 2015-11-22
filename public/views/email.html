@@ -19,17 +19,15 @@
         <div class="pure-g">
 
             <div ng-class="navClass" class="header-wrapper pure-u-1">
-                <div class="navFix">
 
                     <a href="/logout"><img class="email-header pure-img" src="/assets/RedMinneStPaulDG.png"></a>
                     <div class="top-menu pure-menu pure-menu-horizontal">
-                        <ul class="pure-menu-list">
+                        <ul class="header-buttons pure-menu-list">
                             <li class="pure-menu-item"><a href="/logout" class="pure-menu-link">Home</a></li>
                             <li class="pure-menu-item"><a href="/dashboard" class="pure-menu-link">Dashboard</a></li>
                         </ul>
                     </div>
 
-                </div>
             </div>
 
             <div class="pure-u-md-1-5 pure-u-lg-1-3 pure-u-1-12">
@@ -89,7 +87,7 @@
                                     </div>
                                 </li>
 
-                                <li ng-click="order('name')" class="name pure-u-4-24">
+                                <li ng-click="orderMember('name')" class="name pure-u-4-24">
                                     <div class="box-border-right">
                                         Name
                                     </div>
@@ -119,13 +117,13 @@
                                     </div>
                                 </li>
 
-                                <li ng-click="order('emailList')" class="email pure-u-2-24">
+                                <li ng-click="orderMember('emailList')" class="email pure-u-2-24">
                                     <div class="box-border-right">
                                         Email?
                                     </div>
                                 </li>
 
-                            <li ng-click="orderMember('membership')" class="interest pure-u-2-24">Membership?</li>
+                            <li ng-click="orderMember('yes')" class="interest pure-u-2-24">Membership?</li>
                         </ul>
 
                     </div>
@@ -134,7 +132,7 @@
                     <p>Sorry, no results found.</p>
                 </div>
 
-                <div ng-repeat="guest in dataPt4 track by $index | orderBy:predicate:reverse" class="list-item pure-u-1">
+                <div ng-repeat="guest in dataPt4 | orderBy:predicate:reverse" class="list-item pure-u-1">
                     <ul class="categories">
                         <li ng-class-odd="'odd'" ng-class-even="'even'" class = "time pure-u-2-24">
                             <div class="box-border-right">

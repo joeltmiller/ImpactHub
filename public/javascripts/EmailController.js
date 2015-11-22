@@ -107,6 +107,7 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
 
     //Separate sorting function for the interested in membership column due to reverse logic
     $scope.orderMember = function(predicate) {
+        console.log(predicate);
         $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : true;
         $scope.predicate = predicate;
     };
@@ -223,11 +224,11 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                         $scope.getMemberType = function() {
                             if($scope.typeselect == "members"){
                                 console.log("$scope.data[j][2]", $scope.data[j][2])
-                                if($scope.data[j][2] == "Yes, I'm a Member"){
+                                if($scope.data[j][2] == "Yes"){
                                     futurePush($scope.data[j]);
                                 }
                             } else if ($scope.typeselect == "guests"){
-                                if($scope.data[j][2] == "No, I'm a Guest"){
+                                if($scope.data[j][2] == "No"){
                                     futurePush($scope.data[j]);
                                 }
                             } else {
