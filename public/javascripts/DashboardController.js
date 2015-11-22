@@ -416,6 +416,11 @@ app.controller('DashboardController', ['$scope', '$http', '$window', function($s
 
         $http.post('/event', $scope.postData).then(function(res){
             $scope.resData = res.data.query;
+            console.log(res.data.query.length);
+            if(res.data.query.length === 0){
+                //console.log('error message now');
+                swal("Oops!", "No data for that date", "error");
+            }
         });
     };
 

@@ -3,6 +3,15 @@ body {
   background-image: url("/assets/gun_metal2.png");
 }
 
+/*body h1, h2, h3, p, a, li, {*/
+  /*font-family: 'Slabo 27px', serif;*/
+/*}*/
+
+/*html, button, input, select, textarea,*/
+/*.pure-g [class *= "pure-u"] {*/
+  /*font-family: 'Slabo 27px', serif;*/
+/*}*/
+
 .container{
   width: 80%;
   margin: 0 auto;
