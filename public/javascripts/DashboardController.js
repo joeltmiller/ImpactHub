@@ -1,6 +1,6 @@
 var app = angular.module('dashboard', ['tc.chartjs', 'vAccordion']);
 
-app.controller('DashboardController', ['$scope', '$http', function($scope, $http) {
+app.controller('DashboardController', ['$scope', '$http', '$window', function($scope, $http, $window) {
 
 
     //These GET calls could be made to be more efficient.  Current solution based on achieving a MVP.
@@ -157,9 +157,9 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
                                     },
                                     {
                                         label: 'Member',
-                                        fillColor: 'rgb(129,41,38)',
+                                        fillColor: '#333333',
                                         strokeColor: 'rgba(220,220,220,0.8)',
-                                        highlightFill: 'rgb(255,90,94)',
+                                        highlightFill: '#000000',
                                         highlightStroke: 'rgba(220,220,220,1)',
                                         data: [$scope.fiveMonMem.length, $scope.fourMonMem.length, $scope.threeMonMem.length, $scope.twoMonMem.length, $scope.prMonthMem.length, $scope.curMonthMem.length]
                                     }
@@ -197,7 +197,7 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
                                 barDatasetSpacing : 1,
 
                                 //String - A legend template
-                                legendTemplate : '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+                                legendTemplate : '<ul class="graphlable     tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
                             };
 
                         });
@@ -252,8 +252,8 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
             },
             {
                 value: $scope.memberWeek.length,
-                color: '#812926',
-                highlight: '#FF5A5E',
+                color: '#333333',
+                highlight: '#000000',
                 label: 'Member'
             }
         ];
@@ -284,9 +284,9 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
                     },
                     {
                         label: 'Member',
-                        fillColor: 'rgba(220,220,220,0.5)',
+                        fillColor: '#333333',
                         strokeColor: 'rgba(220,220,220,0.8)',
-                        highlightFill: 'rgba(220,220,220,0.75)',
+                        highlightFill: '#000000',
                         highlightStroke: 'rgba(220,220,220,1)',
                         data: [$scope.sixMonthsMember.length]
                     }
@@ -303,8 +303,8 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
                 },
                 {
                     value: $scope.sixMonthsMember.length,
-                    color: '#812926',
-                    highlight: '#FF5A5E',
+                    color: '#333333',
+                    highlight: '#000000',
                     label: 'Member'
                 }
             ];
@@ -325,7 +325,7 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
         segmentStrokeColor: '#fff',
 
         //Number - The width of each segment stroke
-        segmentStrokeWidth: 2,
+        segmentStrokeWidth: 1,
 
         //Number - The percentage of the chart that we cut out of the middle
         percentageInnerCutout: 0, // This is 0 for Pie charts
@@ -345,6 +345,19 @@ app.controller('DashboardController', ['$scope', '$http', function($scope, $http
         //String - A legend template
         legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
     };
+
+    //animated banner on scroll
+    $scope.navClass = 'big';
+    angular.element($window).bind(
+        "scroll", function() {
+            //console.log(window.pageYOffset);
+            if(window.pageYOffset > 0) {
+                $scope.navClass = 'small';
+            } else {
+                $scope.navClass = 'big';
+            }
+            $scope.$apply();
+        });
 
     //beginning of a possible way to access member data through thedatabank.
 

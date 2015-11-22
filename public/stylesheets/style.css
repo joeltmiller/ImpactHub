@@ -8,8 +8,12 @@ body {
   margin: 0 auto;
 }
 
-h1.header{
-  color: white;
+.header{
+  color: #812926;
+  /*float: left;*/
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 50px;
 }
 
 ul {
@@ -21,6 +25,7 @@ ul {
 li {
   display: inline;
   float:left;
+  color: white;
 }
 a{
   color: #ffffff;
@@ -643,4 +648,32 @@ p.person{
 .btn:hover {
   background: darkgray;
   text-decoration: none;
+}
+
+.graph-main {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+}
+
+.graph-section {
+  width: 50%;
+  display: block;
+  float: left;
+  margin-top: 2%;
+}
+
+.dashbutton {
+  float: right;
+  margin: 2%;
+  color: white;
+}
+
+.dashboard-header {
+  background-color: #FFFFFF;
+  height: 50px;
+}
+
+.graphlabel {
+  color: white;
 }
