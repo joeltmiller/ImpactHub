@@ -25,6 +25,8 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
 
     $scope.emails = [];
 
+    $scope.isEmpty = false;
+
     $http.get('/guestEmails').then(function(res){
         $scope.emails = res.data;
     });
@@ -295,6 +297,9 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                             console.log("pushed membership object", $scope.dataObj);
                             $scope.dataPt4.push($scope.dataObj);
                         }
+                    }
+                    if($scope.dataPt4 == 0){
+                        $scope.isEmpty = true;
                     }
                     return $scope.dataPt4;
                 };

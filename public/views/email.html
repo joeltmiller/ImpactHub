@@ -130,6 +130,10 @@
 
                     </div>
 
+                <div ng-show="isEmpty">
+                    <p>Sorry, no results found.</p>
+                </div>
+
                 <div ng-repeat="guest in dataPt4 track by $index | orderBy:predicate:reverse" class="list-item pure-u-1">
                     <ul class="categories">
                         <li ng-class-odd="'odd'" ng-class-even="'even'" class = "time pure-u-2-24">
