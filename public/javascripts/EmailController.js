@@ -153,7 +153,7 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                 var futurePush = function(data){
                     $scope.dataObj.push(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
                     return $scope.dataObj;
-                }
+                };
 
                 var getEmailList = function(emailMe){
                     if(emailMe == 0){

@@ -127,7 +127,7 @@ app.controller('SigninController', ['$scope', '$http', '$location', '$window', f
 
             }
             else {
-                alert("invalid code");
+                swal("Oops!", "Invalid Code.", "error");
                 $scope.memberID = '';
                 $scope.passwordOne = false;
                 $scope.passwordTwo = false;
@@ -151,7 +151,8 @@ app.controller('SigninController', ['$scope', '$http', '$location', '$window', f
 
             $location.path("/whoshere");
         }else{
-            alert("member not found");
+            swal("Oops!", "Member not found", "error");
+            //alert("member not found");
             $scope.memberID = '';
             $scope.passwordOne = false;
             $scope.passwordTwo = false;

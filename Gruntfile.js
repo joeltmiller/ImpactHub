@@ -24,6 +24,8 @@ module.exports = function(grunt) {
 					"angular-route/angular-route.min.js.map",
 					"angular-animate/angular-animate.min.js",
 					"angular-animate/angular-animate.min.js.map",
+					"sweetalert/dist/sweetalert.min.js",
+					"sweetalert/dist/sweetalert.css",
 					"v-accordion/**"
 				],
 				"dest": "public/vendors/"
