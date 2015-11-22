@@ -1,4 +1,4 @@
-var app = angular.module('dashboard', ['tc.chartjs', 'vAccordion']);
+var app = angular.module('dashboard', ['tc.chartjs', 'vAccordion', 'mp.datePicker']);
 
 app.controller('DashboardController', ['$scope', '$http', '$window', function($scope, $http, $window) {
 
@@ -403,4 +403,21 @@ app.controller('DashboardController', ['$scope', '$http', '$window', function($s
     //    };
     //    console.log($scope.membATot());
     //});
+
+    /******* This handles the date picker **************/
+
+    $scope.postData = {};
+    $scope.resData = [];
+
+    $scope.eventForm = function(date){
+        $scope.postData = {
+            timestamp: date
+        };
+
+        $http.post('/event', $scope.postData).then(function(res){
+            $scope.resData = res.data.query;
+        });
+    };
+
+
 }]);

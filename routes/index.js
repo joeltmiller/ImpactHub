@@ -41,6 +41,7 @@ router.post('/guest', function (req, res) {
     var email_me = req.body.email_opt_in;
     var event = req.body.event;
     var datetime = moment().format('YYYY-MM-DD HH:mm:ss');
+    var puredate = moment().format('YYYY-MM-DD');
 
     if(membership == true){
         membership = 1;
@@ -62,8 +63,6 @@ router.post('/guest', function (req, res) {
     var post = {name: name, email: email, meeting_with: meeting, member: member,
     twitter: twitter, membership: membership, company: company, email_me: email_me, event: event, temp_time: datetime};
 
-    console.log(post);
-
     connection.query('INSERT INTO responses SET ?', post, function (err) {
         if (err) throw err;
 
@@ -71,6 +70,32 @@ router.post('/guest', function (req, res) {
 
 
     });
+
+    var secondPost = {name: name, timestamp: puredate, event: event};
+
+    connection.query('INSERT INTO events SET ?', secondPost, function (err) {
+        if (err) throw err;
+
+    });
+});
+
+router.post('/event', function(req,res){
+    var chosenDate = req.body.timestamp;
+    var newdate = chosenDate.split("/").reverse().join("-");
+    var formattedDate = moment(newdate, 'YYYY-DD-MM').format('YYYY-MM-DD');
+
+    var sql    = 'SELECT * FROM events WHERE timestamp = ' + connection.escape(formattedDate);
+    connection.query(sql, function(err, rows) {
+        if (err) throw err;
+
+        res.json({query:rows});
+    });
+
+    //connection.query('SELECT * FROM events WHERE timestamp = ?',[formattedDate], function(err,rows){
+    //    if (err) thnrow err;
+    //
+    //    res.json({query:rows});
+    //});
 
 });
 
