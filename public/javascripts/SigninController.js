@@ -138,15 +138,16 @@ app.controller('SigninController', ['$scope', '$http', '$location', '$window', f
 
     $scope.checkMemberStatus = function(){
         if($scope.memberVerify.Result == "Success"){
-            console.log("Hello, ", $scope.memberVerify.Members[0].FullName1);
+            //console.log("Hello, ", $scope.memberVerify.Members[0].FullName1);
             $scope.memberSuccess = {
                 name: $scope.memberVerify.Members[0].FullName1,
                 email: $scope.memberVerify.Members[0].Email,
                 company: $scope.memberVerify.Members[0].Company
             };
 
-            console.log($scope.memberSuccess);
+            //console.log($scope.memberSuccess);
 
+            //Posting a successfully verified member to the local database.
             $http.post('/member', $scope.memberSuccess);
 
             $location.path("/whoshere");
