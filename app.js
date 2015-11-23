@@ -28,15 +28,7 @@ connection.connect(function(err){
   console.log('You are now connected to the Database!');
 });
 
-//connection.query('SELECT * FROM guest', function (err, rows, fields) {
-//  if (!err)
-//    console.log('SELECT * FROM guest is successful');
-//  else
-//    console.log('Error while performing Query.');
-//});
-
 connection.end();
-
 
 //// view engine setup
 app.set('views', path.join(__dirname, 'public', 'views'));
