@@ -155,7 +155,36 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                     $scope.dataObj.member = data.member;
                     $scope.dataObj.meeting_with = data.meeting_with;
                     $scope.dataObj.email = data.email;
-                    $scope.dataObj.twitter = data.twitter;
+                    if(data.temp_time == null){
+                        $scope.dataObj.temp_time = '';
+                    } else {
+                        $scope.dataObj.temp_time = data.temp_time;
+                    }
+                    if(data.name == null){
+                        $scope.dataObj.name = '';
+                    } else {
+                        $scope.dataObj.name = data.name;
+                    }
+                    if(data.member == null){
+                        $scope.dataObj.member = '';
+                    } else {
+                        $scope.dataObj.member = data.member;
+                    }
+                    if(data.meeting_with == null){
+                        $scope.dataObj.meeting_with = '';
+                    } else {
+                        $scope.dataObj.meeting_with = data.meeting_with;
+                    }
+                    if(data.email == null){
+                        $scope.dataObj.email = '';
+                    } else {
+                        $scope.dataObj.email = data.email;
+                    }
+                    if(data.twitter == null){
+                        $scope.dataObj.twitter = '';
+                    } else {
+                        $scope.dataObj.twitter = data.twitter;
+                    }
 
                     //$scope.dataObj={data.temp_time, data.name, data.member, data.meeting_with, data.email, data.twitter);
                     getEmailList(data.email_me);
@@ -165,7 +194,7 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                 };
 
                 var getEmailList = function(emailMe){
-                    if(emailMe == 0){
+                    if(emailMe == 0 || emailMe == "No"){
                         $scope.dataObj.email_me = "No";
                     } else {
                         $scope.dataObj.email_me = "Yes";
@@ -173,7 +202,7 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                 };
 
                 var getIntMember = function(membership){
-                    if(membership == 0){
+                    if(membership == 0 || membership == "Yes"){
                         $scope.dataObj.membership = "No";
                     } else {
                         $scope.dataObj.membership = "Yes";
