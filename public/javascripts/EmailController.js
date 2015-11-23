@@ -149,12 +149,13 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                 console.log("called data", $scope.calledData);
 
                 var pushToObj = function(data){
+                    console.log("data assessed", data);
                     $scope.dataObj = {};
-                    $scope.dataObj.temp_time = data.temp_time;
-                    $scope.dataObj.name = data.name;
-                    $scope.dataObj.member = data.member;
-                    $scope.dataObj.meeting_with = data.meeting_with;
-                    $scope.dataObj.email = data.email;
+                    //$scope.dataObj.temp_time = data.temp_time;
+                    //$scope.dataObj.name = data.name;
+                    //$scope.dataObj.member = data.member;
+                    //$scope.dataObj.meeting_with = data.meeting_with;
+                    //$scope.dataObj.email = data.email;
                     if(data.temp_time == null){
                         $scope.dataObj.temp_time = '';
                     } else {
@@ -214,7 +215,9 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
 
                         $scope.dataObj = [];
 
-                        var getDateRange = function(date) {
+
+                        var getDateRange = function() {
+                            console.log("does date(",  + ") = .temp_time (", $scope.calledData[i].temp_time + ")?");
 
                             var weekAgo = (Date.today().setTimeToNow().add({days:-8})).toString('yyyy-MM-ddTHH:mm:ssZ');
 
@@ -223,15 +226,15 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                             var sixMonthsAgo = (Date.today().setTimeToNow().add({months:-6})).toString('yyyy-MM-ddTHH:mm:ssZ');
 
                             if($scope.timeselect == "week"){
-                                if(date > weekAgo){
+                                if($scope.calledData[i].temp_time > weekAgo){
                                     pushToObj($scope.calledData[i]);
                                 }
                             } else if ($scope.timeselect == "month"){
-                                if(date > monthAgo){
+                                if($scope.calledData[i].temp_time > monthAgo){
                                     pushToObj($scope.calledData[i]);
                                 }
                             } else if ($scope.timeselect == "sixMonths"){
-                                if(date > sixMonthsAgo){
+                                if($scope.calledData[i].temp_time > sixMonthsAgo){
                                     pushToObj($scope.calledData[i]);
                                 }
                             } else {
@@ -240,7 +243,7 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                             return $scope.dataObj;
                         };
 
-                        getDateRange($scope.calledData[i].temp_time);
+                        getDateRange();
 
 
 
@@ -257,12 +260,13 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                         $scope.dataObj = [];
 
                         $scope.getMemberType = function() {
+                            console.log(".member = ", $scope.data[j].member);
                             if($scope.typeselect == "members"){
-                                if($scope.data[j][2] == "Yes, I'm a Member"){
+                                if($scope.data[j].member == "Yes, I'm a Member"){
                                     pushToObj($scope.data[j]);
                                 }
                             } else if ($scope.typeselect == "guests"){
-                                if($scope.data[j][2] == "No, I'm a Guest"){
+                                if($scope.data[j].member == "No, I'm a Guest"){
                                     pushToObj($scope.data[j]);
                                 }
                             } else {
@@ -286,11 +290,11 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
 
                         $scope.getEmailType = function() {
                             if($scope.emailselect == "yes"){
-                                if($scope.dataPt2[k][6] == "Yes"){
+                                if($scope.dataPt2[k].email_me == "Yes"){
                                     pushToObj($scope.dataPt2[k]);
                                 }
                             } else if ($scope.emailselect == "no"){
-                                if($scope.dataPt2[k][6] == "No,"){
+                                if($scope.dataPt2[k].email_me == "No,"){
                                     pushToObj($scope.dataPt2[k]);
                                 }
                             } else {
@@ -312,13 +316,13 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                     for(var l = 0; l < $scope.dataPt3.length; l++){
                         $scope.dataObj = [];
 
-                        $scope.getEmailType = function() {
+                        $scope.getMemberType = function() {
                             if($scope.memberselect == "yes"){
-                                if($scope.dataPt3[l][7] == "Yes"){
+                                if($scope.dataPt3[l].membership == "Yes"){
                                     pushToObj($scope.dataPt3[l]);
                                 }
                             } else if ($scope.memberselect == "no"){
-                                if($scope.dataPt3[l][7] == "No"){
+                                if($scope.dataPt3[l].membership == "No"){
                                     pushToObj($scope.dataPt3[l]);
                                 }
                             } else {
@@ -326,7 +330,7 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                             }
                         };
 
-                        $scope.getEmailType();
+                        $scope.getMemberType();
 
                         if($scope.dataObj.length != 0){
                             console.log("pushed membership object", $scope.dataObj);
