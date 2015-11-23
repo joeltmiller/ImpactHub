@@ -127,7 +127,17 @@ app.controller('SigninController', ['$scope', '$http', '$location', '$window', f
 
             }
             else {
-                swal("Oops!", "Invalid Code.", "error");
+            swal({
+                title: 'Oops!',
+                text: 'Invalid Code',
+                //type: 'error',
+                confirmButtonColor: '#802926',
+                imageUrl: '/assets/RedMinneStPaulDG.png',
+                imageSize: '400x79'
+                //width: 000,
+                //padding: 100,
+                //background: 'url(http:........)'
+            });
                 $scope.memberID = '';
                 $scope.passwordOne = false;
                 $scope.passwordTwo = false;
@@ -152,8 +162,17 @@ app.controller('SigninController', ['$scope', '$http', '$location', '$window', f
 
             $location.path("/whoshere");
         }else{
-            swal("Oops!", "Member not found", "error");
-            //alert("member not found");
+            swal({
+                title: 'Oops!',
+                text: 'Member Not Found',
+                //type: 'error',
+                confirmButtonColor: '#802926',
+                imageUrl: '/assets/RedMinneStPaulDG.png',
+                imageSize: '400x79'
+                //width: 000,
+                //padding: 100,
+                //background: 'url(http:........)'
+            });
             $scope.memberID = '';
             $scope.passwordOne = false;
             $scope.passwordTwo = false;
