@@ -51,7 +51,7 @@ label{
 }
 
 .testNav a {
-  display: block;
+  display: none;
   width: 300px;
 }
 
