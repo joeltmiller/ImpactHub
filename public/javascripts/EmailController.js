@@ -146,31 +146,37 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
 
                 $scope.calledData = res.data;
 
+                console.log("called data", $scope.calledData);
+
                 var pushToObj = function(data){
-                    $scope.dataObj.push(data.temp_time, data.name, data.member, data.meeting_with, data.email, data.twitter);
+                    $scope.dataObj = {};
+                    $scope.dataObj.temp_time = data.temp_time;
+                    $scope.dataObj.name = data.name;
+                    $scope.dataObj.member = data.member;
+                    $scope.dataObj.meeting_with = data.meeting_with;
+                    $scope.dataObj.email = data.email;
+                    $scope.dataObj.twitter = data.twitter;
+
+                    //$scope.dataObj={data.temp_time, data.name, data.member, data.meeting_with, data.email, data.twitter);
                     getEmailList(data.email_me);
                     getIntMember(data.membership);
                     return $scope.dataObj;
-                };
-
-                var futurePush = function(data){
-                    $scope.dataObj.push(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7]);
-                    return $scope.dataObj;
+                    console.log("returned dataObject");
                 };
 
                 var getEmailList = function(emailMe){
                     if(emailMe == 0){
-                        $scope.dataObj.push("No");
+                        $scope.dataObj.email_me = "No";
                     } else {
-                        $scope.dataObj.push("Yes");
+                        $scope.dataObj.email_me = "Yes";
                     }
                 };
 
                 var getIntMember = function(membership){
                     if(membership == 0){
-                        $scope.dataObj.push("No");
+                        $scope.dataObj.membership = "No";
                     } else {
-                        $scope.dataObj.push("Yes");
+                        $scope.dataObj.membership = "Yes";
                     }
                 };
 
@@ -223,6 +229,7 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
 
                         $scope.getMemberType = function() {
                             if($scope.typeselect == "members"){
+<<<<<<< HEAD
                                 console.log("$scope.data[j][2]", $scope.data[j][2])
                                 if($scope.data[j][2] == "Yes"){
                                     futurePush($scope.data[j]);
@@ -230,9 +237,17 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                             } else if ($scope.typeselect == "guests"){
                                 if($scope.data[j][2] == "No"){
                                     futurePush($scope.data[j]);
+=======
+                                if($scope.data[j][2] == "Yes, I'm a Member"){
+                                    pushToObj($scope.data[j]);
+                                }
+                            } else if ($scope.typeselect == "guests"){
+                                if($scope.data[j][2] == "No, I'm a Guest"){
+                                    pushToObj($scope.data[j]);
+>>>>>>> pushing objects instead of arrays
                                 }
                             } else {
-                                futurePush($scope.data[j]);
+                                pushToObj($scope.data[j]);
                             }
                         };
 
@@ -253,14 +268,14 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                         $scope.getEmailType = function() {
                             if($scope.emailselect == "yes"){
                                 if($scope.dataPt2[k][6] == "Yes"){
-                                    futurePush($scope.dataPt2[k]);
+                                    pushToObj($scope.dataPt2[k]);
                                 }
                             } else if ($scope.emailselect == "no"){
                                 if($scope.dataPt2[k][6] == "No,"){
-                                    futurePush($scope.dataPt2[k]);
+                                    pushToObj($scope.dataPt2[k]);
                                 }
                             } else {
-                                futurePush($scope.dataPt2[k]);
+                                pushToObj($scope.dataPt2[k]);
                             }
                         };
 
@@ -281,14 +296,14 @@ app.controller('EmailController', ['$scope', '$http', '$window', function($scope
                         $scope.getEmailType = function() {
                             if($scope.memberselect == "yes"){
                                 if($scope.dataPt3[l][7] == "Yes"){
-                                    futurePush($scope.dataPt3[l]);
+                                    pushToObj($scope.dataPt3[l]);
                                 }
                             } else if ($scope.memberselect == "no"){
                                 if($scope.dataPt3[l][7] == "No"){
-                                    futurePush($scope.dataPt3[l]);
+                                    pushToObj($scope.dataPt3[l]);
                                 }
                             } else {
-                                futurePush($scope.dataPt3[l]);
+                                pushToObj($scope.dataPt3[l]);
                             }
                         };
 

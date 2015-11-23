@@ -136,47 +136,47 @@
                     <ul class="categories">
                         <li ng-class-odd="'odd'" ng-class-even="'even'" class = "time pure-u-2-24">
                             <div class="box-border-right">
-                                {{guest[0] | date:"MM/dd/yyyy"}}
+                                {{guest.temp_time | date:"MM/dd/yyyy"}}
                             </div>
                         </li>
 
                         <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-4-24">
                             <div class="box-border-right">
-                                {{guest[1]}}
+                                {{guest.name}}
                             </div>
                         </li>
 
                         <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-2-24">
                             <div class="box-border-right">
-                                {{guest[2]}}
+                                {{guest.member}}
                             </div>
                         </li>
 
                         <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-4-24">
                             <div class="box-border-right">
-                                {{guest[3]}}
+                                {{guest.meeting_with}}
                             </div>
                         </li>
 
                         <li ng-class-odd="'odd'" ng-class-even="'even'"  class="email pure-u-4-24">
                             <div class="box-border-right">
-                                {{guest[4]}}
+                                {{guest.email}}
                             </div>
                         </li>
 
                         <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-4-24">
                             <div class="box-border-right">
-                                {{guest[5]}}
+                                {{guest.twitter}}
                             </div>
                         </li>
 
                         <li ng-class-odd="'odd'" ng-class-even="'even'" class="name pure-u-2-24">
                             <div class="box-border-right">
-                                {{guest[6]}}
+                                {{guest.email_me}}
                             </div>
                         </li>
 
-                        <li ng-class-odd="'odd'" ng-class-even="'even'" class="interest pure-u-2-24">{{guest[7]}}</li>
+                        <li ng-class-odd="'odd'" ng-class-even="'even'" class="interest pure-u-2-24">{{guest.membership}}</li>
                     </ul>
 
                 </div>
