@@ -9,13 +9,13 @@
             <div class="pure-u-5-12 peopleDiv main-login-content">
                 <h2>Members</h2>
                 <hr />
-                <p class="person" ng-repeat="person in getMember | orderBy: 'created_at':true">{{person.name}}</p>
+                <p class="person" ng-repeat="person in getMember | orderBy: 'created_at':true track by $index">{{person.name}}</p>
             </div>
             <div class="pure-u-2-12 spaceDiv"></div>
             <div class="pure-u-5-12 peopleDiv main-login-content">
                 <h2>Guests</h2>
                 <hr />
-                <p class="person" ng-repeat="person in getGuest | orderBy: 'created_at':true">{{person.name}}</p>
+                <p class="person" ng-repeat="person in getGuest | orderBy: 'created_at':true track by $index">{{person.name}}</p>
             </div>
         </div>
 </div>

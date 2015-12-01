@@ -18,10 +18,6 @@ app.config(function($routeProvider, $locationProvider){
             templateUrl: 'views/thanks.html',
             controller: 'ThankYouController'
         })
-        .when('/signuptest', {
-            templateUrl: 'views/signup.html',
-            controller: 'SignupController'
-        })
         .when('/whoshere',{
             templateUrl: 'views/whoshere.html',
             controller: 'WhosHereController'
